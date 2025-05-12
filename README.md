@@ -8,7 +8,7 @@ This is a reference module for PowerShell beginners.
 
 When the user starts PowerShell, they can be presented with this welcome screen.
 
-![PSIntro](images/PSIntro.png)
+![PSIntro](images/psintro.png)
 
 When run in Windows Terminal, or similar, the links should be clickable, including a link to online help for `Update-Help`.
 
