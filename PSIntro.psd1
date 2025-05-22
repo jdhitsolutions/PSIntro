@@ -27,7 +27,7 @@
             # ReleaseNotes = ''
             # Prerelease = ''
             # RequireLicenseAcceptance = $false
-            # ExternalModuleDependencies = @()
+            # ExternalModuleDependencies = @('Microsoft.PowerShell.ThreadJob')
 
         } # End of PSData hashtable
 
