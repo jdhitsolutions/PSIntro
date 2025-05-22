@@ -1,56 +1,13 @@
-Function Start-PSTutorial {
-    [cmdletbinding()]
-    [OutputType('None')]
-    Param( )
-
-    $list = @"
-    $($PSStyle.Underline+$PSStyle.Foreground.Green)Tutorial Menu$($PSStyle.Reset)
-
-    1 - Get-Command
-    2 - Get-Help
-    3 - Get-Member
-    4 - Quit
-
-"@
-
-    $list
-    [int]$r = Read-Host '    Select a menu option [1-4]'
-
-    Switch ($r) {
-        1 { &"$PSScriptRoot\..\tutorials\Invoke-GetCommandTutorial.ps1" }
-        2 { &"$PSScriptRoot\..\tutorials\Invoke-GetHelpTutorial.ps1" }
-        3 { &"$PSScriptRoot\..\tutorials\Invoke-GetMemberTutorial.ps1" }
-    }
-}
-
 Function Get-PSIntro {
     [cmdletbinding()]
     [Alias('PSIntro','PSWelcome')]
     [OutputType('Object[]')]
     Param(
+        [Parameter(HelpMessage = 'Include module status')]
+        [switch]$ModuleStatus,
         [Parameter(HelpMessage = 'Do not show the tutorial prompt')]
         [switch]$NoTutorial
     )
-    $modules = 'PSReadline', 'Microsoft.PowerShell.PSResourceGet'
-    $j = @()
-    foreach ($m in $modules) {
-        $j += Start-ThreadJob {
-            param($Name)
-            $find = Find-Module $Name
-            $local = Get-Module $Name -ListAvailable |
-            Sort-Object -Property Version |
-            Select-Object -Last 1 -ExpandProperty Version
-
-            [PSCustomObject]@{
-                Name         = $Name
-                Online       = $find.version
-                Installed    = $local
-                UpdateNeeded = $find.version -gt $local
-            }
-        } -ArgumentList $m
-    }
-    #get module status from thread jobs started on module import
-    $ModuleStatus = $j | Wait-Job | Receive-Job -Wait
 
     Clear-Host
 
@@ -78,11 +35,14 @@ $head
 
     $intro
 
-    '{0}{1}{2}' -f $cmdStyle, 'Key module status:', $reset
-    #create a custom formatted table
-    $ModuleStatus | Format-Table Name, @{Name = 'Online'; Expression = { $_.Online }; align = 'right' },
-    @{Name = 'Installed'; Expression = { $_.Installed }; align = 'right' },
-    @{Name = 'UpdateNeeded'; Expression = {
+    if ($ModuleStatus) {
+        $ModuleInfo = Get-ModuleStatus
+        '{0}{1}{2}' -f $cmdStyle, 'Key module status:', $reset
+        #create a custom formatted table. Normally this is not a best practice
+        #but the output of this command is a presentation of information
+        $ModuleInfo | Format-Table Name, @{Name = 'Online'; Expression = { $_.Online }; align = 'right' },
+        @{Name = 'Installed'; Expression = { $_.Installed }; align = 'right' },
+        @{Name = 'UpdateNeeded'; Expression = {
             If ($_.UpdateNeeded) {
                 "$($PSStyle.Foreground.BrightRed)$($_.UpdateNeeded)$($PSstyle.Reset)"
             }
@@ -92,12 +52,13 @@ $head
         }; align = 'center'
     }
 
-    If ($ModuleStatus.UpdateNeeded -contains $True) {
+    If ($ModuleInfo.UpdateNeeded -contains $True) {
         Write-Host "$($warnStyle)You may need to update or install the modules listed above.$($reset)"
     }
     Else {
         Write-Host "$($highLight2)All key modules are up to date.$($reset)"
     }
+} #if ModuleStatus
 
     If (-Not $NoTutorial) {
         $promptStyle

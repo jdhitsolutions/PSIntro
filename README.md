@@ -4,7 +4,7 @@
 
 This is a reference module for PowerShell beginners.
 
-## Get-PSIntro
+## [Get-PSIntro](docs/Get-PSIntro.md)
 
 When the user starts PowerShell, they can be presented with this welcome screen.
 
@@ -12,11 +12,15 @@ When the user starts PowerShell, they can be presented with this welcome screen.
 
 When run in Windows Terminal, or similar, the links should be clickable, including a link to online help for `Update-Help`.
 
-The key module status feature is meant to provide a quick reference of critical modules. These are modules that have a high impact on the user experience.
-
 By default, the user will be prompted to run a brief set of tutorials. Running `Get-PSIntro -NoTutorial` will display the welcome screen without the tutorial prompt. This is a command that could go into a user's profile. I will add code so that the welcome screen can be displayed once every 24 hours.
 
-## Start-Tutorial
+### Module Status
+
+The user can also use the `-ModuleStatus` parameter to display the status of key modules. This feature is meant to provide a quick reference of critical modules. These are modules that have a high impact on the user experience.
+
+This information is also available by running [`Get-ModuleStatus`[(docs/Get-ModuleStatus.md)].
+
+## [Start-Tutorial](docs/Start-Tutorial.md)
 
 The module includes a set of interactive tutorials. `Start-Tutorial` presents a simple menu.
 

@@ -5,11 +5,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.0] - 2025-05-22
+
+### Added
+
+- Moved module status code to a new function `Get-ModuleStatus`.
+
+### Changed
+
+- Updated `Get-PSIntro` to not display module information by default. The command now has a parameter, `ModuleStatus`, to display the module status information.
+- Updated `README`.
+- Help updates.
+- Exported public functions to separate files.
+
+### Removed
+
+- Removed the requirement for the ThreadJob module.
+
 ## [0.4.0] - 2025-05-12
 
 ### Added
 
 - Initial release to GitHub
 
-[Unreleased]: ENTER-URL-HERE
+[Unreleased]: https://github.com/jdhitsolutions/PSIntro/compare/v0.5.0..HEAD
+[0.5.0]: https://github.com/jdhitsolutions/PSIntro/compare/v0.4.0..v0.5.0
 [0.4.0]: ENTER-URL-HERE

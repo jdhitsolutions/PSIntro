@@ -14,12 +14,12 @@ Display a PowerShell welcome screen
 ## SYNTAX
 
 ```yaml
-Get-PSIntro [-NoTutorial] [<CommonParameters>]
+Get-PSIntro [-ModuleStatus] [-NoTutorial] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 
-This command will display a PowerShell welcome or "splash" screen. The display includes a list of online resources and the status of key modules. Keeping these modules up to date will help ensure a good user experience.
+This command will display a PowerShell welcome or "splash" screen. The display includes a list of online resources. If you include the -ModuleStatus parameter, the output will include the status of key modules. Keeping these modules up to date will help ensure a good user experience.
 
 The user will also be prompted to run a set of tutorials. The tutorials are interactive and will help the user learn about PowerShell. If the user chooses to run the tutorials, they will be run consecutively. The tutorials are written as PowerShell scripts with a combination of formatted text and live console output from the user's session. This ensures that output is relevant to the user's environment.
 
@@ -30,7 +30,7 @@ To display the welcome screen without the tutorial prompt, use the -NoTutorial s
 ### Example 1
 
 ```powershell
-PS C:\> Get-PSIntro
+PS C:\> Get-PSIntro -ModuleStatus
 
 Welcome to PowerShell!
 
@@ -58,12 +58,27 @@ Would you like to run a short interactive tutorial? (Y/N):
 
 The output will for formatted and styled using $PSStyle. The links will be clickable in Windows Terminal or similar.
 
-
 ## PARAMETERS
 
 ### -NoTutorial
 
 Do not show the tutorial prompt. You might want to use this parameter if you want to include this command in your PowerShell profile script.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ModuleStatus
+
+Include module status
 
 ```yaml
 Type: SwitchParameter

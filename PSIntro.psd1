@@ -4,7 +4,7 @@
 @{
 
     RootModule           = 'PSIntro.psm1'
-    ModuleVersion        = '0.4.0'
+    ModuleVersion        = '0.5.0'
     CompatiblePSEditions = 'Core'
     GUID                 = 'e5e4f309-b2ec-43e0-ac18-4a136a112487'
     Author               = 'Jeff Hicks'
@@ -12,8 +12,8 @@
     Copyright            = '(c) 2025 JDH Information Technology Solutions, Inc.'
     Description          = 'A welcome screen for PowerShell and a set of brief tutorials designed for absolute beginners.'
     PowerShellVersion    = '7.5'
-    FunctionsToExport    = 'Start-PSTutorial','Get-PSIntro'
-    RequiredModules      =  'Microsoft.PowerShell.ThreadJob'
+    FunctionsToExport    = 'Start-PSTutorial','Get-PSIntro','Get-ModuleStatus'
+    RequiredModules      = ''
     CmdletsToExport      = ''
     VariablesToExport    = ''
     AliasesToExport      = 'PSIntro','PSWelcome'
@@ -27,7 +27,7 @@
             # ReleaseNotes = ''
             # Prerelease = ''
             # RequireLicenseAcceptance = $false
-            # ExternalModuleDependencies = @('Microsoft.PowerShell.ThreadJob')
+            # ExternalModuleDependencies = @()
 
         } # End of PSData hashtable
 
