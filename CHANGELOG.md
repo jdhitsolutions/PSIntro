@@ -5,7 +5,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.5.0] - 2025-05-22
+## 0.5.0 - 2025-05-22
 
 ### Added
 
@@ -22,7 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Removed the requirement for the ThreadJob module.
 
-## [0.4.0] - 2025-05-12
+## 0.4.0 - 2025-05-12
 
 ### Added
 
