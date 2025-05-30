@@ -5,6 +5,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0] - 2025-05-30
+
+### Added
+
+- Added a link to the PowerShell Gallery in `Get-PSIntro`.
+
+### Changed
+
+- Modified `Get-PSIntro` so that the user needs to *opt-in* to get the tutorial prompt. Modified the tutorial parameter and reversed the behavior. __This is a breaking change from previous versions.__
+- Minor updates to tutorials.
+- Updated `README`.
+
 ## 0.5.0 - 2025-05-22
 
 ### Added
@@ -28,6 +40,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release to GitHub
 
-[Unreleased]: https://github.com/jdhitsolutions/PSIntro/compare/v0.5.0..HEAD
-[0.5.0]: https://github.com/jdhitsolutions/PSIntro/compare/v0.4.0..v0.5.0
-[0.4.0]: ENTER-URL-HERE
+[Unreleased]: https://github.com/jdhitsolutions/PSIntro/compare/v0.6.0..HEAD
+[0.6.0]: https://github.com/jdhitsolutions/PSIntro/compare/v0.5.0..v0.6.0

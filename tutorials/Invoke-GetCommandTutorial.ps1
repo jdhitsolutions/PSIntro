@@ -63,7 +63,7 @@ The command syntax shows the command name, {2}Get-Process{1} followed by a set o
 Each parameter name is indicated with a dash such as -Name and -Id. After each parameter is
 an indication of what type of parameter value you need to specify.
 
-To better understand the parameters, you will need to use {2}Get-Help{1} to learn more.
+To better understand the parameters, use {2}Get-Help{1} to learn more.
 
 "@ -f $highLight,$reset,$cmdStyle
 #run the tutorial
@@ -84,7 +84,7 @@ pause
 $P4
 Get-Command *process* -CommandType Function,Cmdlet | Select-Object -first 5 | Out-Host
 $P5
-Get-Command Get-Process -syntax | Out-Host
+Get-Command Get-Process -Syntax | Out-Host
 pause
 $P6
 

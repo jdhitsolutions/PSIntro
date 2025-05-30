@@ -8,9 +8,9 @@ $title = "$($titleStyle)Getting Started with $cmd$reset"
 $Intro = @"
 
 {0}$cmd{1} is another of the basic PowerShell cmdlets you need to understand how to use. You
-will be using the command constantly. You should refer to the help often. Each new release
-might introduce new commands, new parameters, new help examples as well as correcting errors
-in documentation.
+will be using this command constantly. You should refer to the help often. Each new release
+of PowerShell might introduce new commands, new parameters, new help examples as well as
+correcting errors in documentation.
 
 Out of the box, PowerShell ships with a subset of help documentation. Microsoft will also
 periodically update help documentation, although there is no notification mechanism. After
@@ -25,7 +25,7 @@ $P1 = @"
 
 While learning PowerShell, don't try to memorize how to use a PowerShell command. Instead,
 learn to {2}discover{1} how to use it. You can use the {0}$cmd{1} cmdlet or helper function, {2}help{1},
-which provides the same information as the cmdlet, but in a paged format.
+which provides the same information as the cmdlet, but with paged output.
 
 $prompt {3}help{1} {4}Get-Process{1}
 "@ -f $cmdStyle,$reset,$highLight,$cmdStyle,$defaultTokenStyle

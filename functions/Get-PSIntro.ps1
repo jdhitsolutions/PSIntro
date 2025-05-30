@@ -5,8 +5,8 @@ Function Get-PSIntro {
     Param(
         [Parameter(HelpMessage = 'Include module status')]
         [switch]$ModuleStatus,
-        [Parameter(HelpMessage = 'Do not show the tutorial prompt')]
-        [switch]$NoTutorial
+        [Parameter(HelpMessage = 'Show the tutorial prompt')]
+        [switch]$Tutorial
     )
 
     Clear-Host
@@ -18,6 +18,7 @@ Function Get-PSIntro {
         "PowerShell on Slack       : $($linkStyle)https//aka.ms/psslack$($PSStyle.Reset)",
         "PowerShell on Discord     : $($linkStyle)https://aka.ms/psdiscord$($PSStyle.Reset)"
         "PowerShell Team Blog      : $($linkStyle)https://devblogs.microsoft.com/powershell$($PSStyle.Reset)",
+        "PowerShell Gallery        : $($linkStyle)https://www.powershellgallery.com$($PSStyle.Reset)",
         "GitHub Discussion         : $($linkStyle)https://github.com/PowerShell/PowerShell/discussions$($PSStyle.Reset)"
     )
 
@@ -60,7 +61,7 @@ $head
     }
 } #if ModuleStatus
 
-    If (-Not $NoTutorial) {
+    If ($Tutorial) {
         $promptStyle
         $r = Read-Host -Prompt 'Would you like to run a short interactive tutorial? (Y/N)'
         $reset

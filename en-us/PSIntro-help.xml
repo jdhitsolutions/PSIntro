@@ -6,7 +6,7 @@
       <command:verb>Get</command:verb>
       <command:noun>ModuleStatus</command:noun>
       <maml:description>
-        <maml:para>{Get key module status</maml:para>
+        <maml:para>Get key module status</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
@@ -87,6 +87,10 @@ PSReadLine                         2.3.6  2.3.6            False</dev:code>
         <maml:linkText>Online Version:</maml:linkText>
         <maml:uri>https://jdhitsolutions.com/yourls/a14c2e</maml:uri>
       </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-PSIntro</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
@@ -100,16 +104,15 @@ PSReadLine                         2.3.6  2.3.6            False</dev:code>
     </command:details>
     <maml:description>
       <maml:para>This command will display a PowerShell welcome or "splash" screen. The display includes a list of online resources. If you include the -ModuleStatus parameter, the output will include the status of key modules. Keeping these modules up to date will help ensure a good user experience.</maml:para>
-      <maml:para>The user will also be prompted to run a set of tutorials. The tutorials are interactive and will help the user learn about PowerShell. If the user chooses to run the tutorials, they will be run consecutively. The tutorials are written as PowerShell scripts with a combination of formatted text and live console output from the user's session. This ensures that output is relevant to the user's environment.</maml:para>
-      <maml:para>To display the welcome screen without the tutorial prompt, use the -NoTutorial switch.</maml:para>
+      <maml:para>If you include -Tutorial, you will be prompted to run a set of tutorials. The tutorials are interactive and will help the user learn about PowerShell. If the user chooses to run the tutorials, they will be run consecutively. The tutorials are written as PowerShell scripts with a combination of formatted text and live console output from the user's session. This ensures that output is relevant to the user's environment.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Get-PSIntro</maml:name>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-          <maml:name>NoTutorial</maml:name>
+          <maml:name>ModuleStatus</maml:name>
           <maml:description>
-            <maml:para>Do not show the tutorial prompt. You might want to use this parameter if you want to include this command in your PowerShell profile script.</maml:para>
+            <maml:para>Include module status.</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -118,9 +121,9 @@ PSReadLine                         2.3.6  2.3.6            False</dev:code>
           <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-          <maml:name>ModuleStatus</maml:name>
+          <maml:name>Tutorial</maml:name>
           <maml:description>
-            <maml:para>Include module status</maml:para>
+            <maml:para>Show the tutorial prompt. If you select Yes, the tutorials will run consecutively, in order. If you select No, the command will exit without running any tutorials. Run Start-PSTutorial to run the tutorials at any time and in any order.</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -132,9 +135,9 @@ PSReadLine                         2.3.6  2.3.6            False</dev:code>
     </command:syntax>
     <command:parameters>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-        <maml:name>NoTutorial</maml:name>
+        <maml:name>ModuleStatus</maml:name>
         <maml:description>
-          <maml:para>Do not show the tutorial prompt. You might want to use this parameter if you want to include this command in your PowerShell profile script.</maml:para>
+          <maml:para>Include module status.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -144,9 +147,9 @@ PSReadLine                         2.3.6  2.3.6            False</dev:code>
         <dev:defaultValue>False</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-        <maml:name>ModuleStatus</maml:name>
+        <maml:name>Tutorial</maml:name>
         <maml:description>
-          <maml:para>Include module status</maml:para>
+          <maml:para>Show the tutorial prompt. If you select Yes, the tutorials will run consecutively, in order. If you select No, the command will exit without running any tutorials. Run Start-PSTutorial to run the tutorials at any time and in any order.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -193,6 +196,7 @@ Welcome to PowerShell!
  PowerShell on Slack       : https//aka.ms/psslack
  PowerShell on Discord     : https://aka.ms/psdiscord
  PowerShell Team Blog      : https://devblogs.microsoft.com/powershell
+ PowerShell Gallery        : https://www.powershellgallery.com
  GitHub Discussion         : https://github.com/PowerShell/PowerShell/discussions
 
   Use any of the links above to get started learning more about PowerShell.
@@ -205,9 +209,7 @@ Name                               Online Installed UpdateNeeded
 PSReadline                          2.3.6     2.3.6    False
 Microsoft.PowerShell.PSResourceGet  1.1.1     1.1.1    False
 
-All key modules are up to date.
-
-Would you like to run a short interactive tutorial? (Y/N):</dev:code>
+All key modules are up to date.</dev:code>
         <dev:remarks>
           <maml:para>The output will for formatted and styled using $PSStyle. The links will be clickable in Windows Terminal or similar.</maml:para>
         </dev:remarks>
@@ -215,7 +217,7 @@ Would you like to run a short interactive tutorial? (Y/N):</dev:code>
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Start-Tutorial</maml:linkText>
+        <maml:linkText>Start-PSTutorial</maml:linkText>
         <maml:uri></maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>

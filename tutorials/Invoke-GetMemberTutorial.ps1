@@ -165,12 +165,15 @@ $P4
 pause
 $P5
 pause
+Clear-Host
 $P6
 pause
+Clear-Host
 $P7
 pause
 Get-Process -id $pid | Get-Member -MemberType ScriptProperty | Out-Host
 pause
+Clear-Host
 $P8
 pause
 Get-Process | Where-Object WS -gt 10mb | Sort-Object WS -Descending |

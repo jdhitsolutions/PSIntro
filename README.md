@@ -10,19 +10,33 @@ When the user starts PowerShell, they can be presented with this welcome screen.
 
 ![PSIntro](images/psintro.png)
 
-When run in Windows Terminal, or similar, the links should be clickable, including a link to online help for `Update-Help`.
+When run in Windows Terminal, or similar, the links should be clickable, including a link to online help for `Update-Help`. This is a command that could go into a user's profile. I will add code so that the welcome screen can be displayed once every 24 hours.
 
-By default, the user will be prompted to run a brief set of tutorials. Running `Get-PSIntro -NoTutorial` will display the welcome screen without the tutorial prompt. This is a command that could go into a user's profile. I will add code so that the welcome screen can be displayed once every 24 hours.
+If the user runs:
 
-### Module Status
+```powershell
+Get-PSIntro -tutorial
+```
 
-The user can also use the `-ModuleStatus` parameter to display the status of key modules. This feature is meant to provide a quick reference of critical modules. These are modules that have a high impact on the user experience.
+This will display the welcome screen with a tutorial prompt.
 
-This information is also available by running [`Get-ModuleStatus`[(docs/Get-ModuleStatus.md)].
+![Get-PSIntro with tutorial prompt](images/tutorial-prompt.png)
+
+The user can also use the `-ModuleStatus` parameter to display the status of key modules.
+
+```powershell
+Get-PSIntro -ModuleStatus
+```
+
+![Get-PSIntro with module status](images/psintro-module-status.png)
+
+This feature is meant to provide a quick reference of critical modules. These are modules that have a high impact on the user experience.
+
+This information is also available by running [`Get-ModuleStatus`](docs/Get-ModuleStatus.md).
 
 ## [Start-Tutorial](docs/Start-Tutorial.md)
 
-The module includes a set of interactive tutorials. `Start-Tutorial` presents a simple menu.
+The module includes a set of interactive tutorials. Running `Start-Tutorial` presents a simple menu.
 
 ![Start-Tutorial](images/start-pstutorial.png)
 
@@ -44,6 +58,4 @@ This is a list of items under consideration for future development.
 
 - Move tutorials to culture folder so that they can be localized.
 - Are there other key modules that should be included?
-- Add a link to the PowerShell Gallery.
 - Update `Get-PSIntro` to show the splash screen only once every 24 hours.
-- Update `Get-PSIntro` to only show the welcome splash screen with links. No message, module status, or tutorial prompt.
