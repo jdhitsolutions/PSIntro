@@ -14,12 +14,12 @@ Start an interactive PowerShell tutorial
 ## SYNTAX
 
 ```yaml
-Start-PSTutorial [<CommonParameters>]
+Start-PSTutorial [-Topic <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 
-This command presents a simple menu of interactive PowerShell tutorials. At the completion of each tutorial, the user is returned to the menu.
+This command serves as a launcher for the tutorials included in the PSIntro module. You can select a tutorial topic. If you don't specify a topic, you will get a simple menu of interactive PowerShell tutorials.
 
 ## EXAMPLES
 
@@ -28,17 +28,50 @@ This command presents a simple menu of interactive PowerShell tutorials. At the 
 ```powershell
 PS C:\> Start-PSTutorial
 
-    Tutorial Menu
+    PowerShell Tutorial Menu
 
-    1 - Get-Command
-    2 - Get-Help
-    3 - Get-Member
-    4 - Quit
+    1 - PowerShell Essentials
+    2 - Get-Command
+    3 - Get-Help
+    4 - Get-Member
+    5 - Quit
 
-    Select a menu option [1-4]:
+    Select a menu option [1-5]:
 ```
 
+The menu title will be formatted using $PSStyle.
+
+### Example 2
+
+```powershell
+PS C:\> Start-PSTutorial -Topic 'Get-Command'
+```
+
+Launch the Get-Command tutorial.
+
 ## PARAMETERS
+
+### -Topic
+
+Specify a tutorial topic otherwise you will be presented with a menu of topics.
+Valid topics are:
+
+- PowerShell Essentials
+- Get-Command
+- Get-Help
+- Get-Member
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### CommonParameters
 

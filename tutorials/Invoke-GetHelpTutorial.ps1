@@ -1,6 +1,7 @@
 #an interactive tutorial for Get-Help
 Param(
-    [switch]$Full
+    [switch]$Full,
+    [switch]$Menu
 )
 
 $cmd = 'Get-Help'
@@ -28,6 +29,7 @@ learn to {2}discover{1} how to use it. You can use the {0}$cmd{1} cmdlet or help
 which provides the same information as the cmdlet, but with paged output.
 
 $prompt {3}help{1} {4}Get-Process{1}
+
 "@ -f $cmdStyle,$reset,$highLight,$cmdStyle,$defaultTokenStyle
 
 $P2 = @"
@@ -36,18 +38,18 @@ The output headings should be self-explanatory. You can see the command {0}name{
 
 NAME
     Get-Process
+
 "@ -f $highLight,$reset
 
 $P3 = @"
-
 A brief {0}synopsis{1} or explanation about what the command does.
 
 SYNOPSIS
     Gets the processes that are running on the local computer.
+
 "@ -f $highLight,$reset
 
 $P4 = @"
-
 The command {0}syntax{1}, which is the same thing you can see with {2}Get-Command{1}.
 
 SYNTAX
@@ -63,15 +65,16 @@ SYNTAX
     Get-Process [[-Name] <System.String[]>] -IncludeUserName [<CommonParameters>]
 
     Get-Process -IncludeUserName -InputObject <System.Diagnostics.Process[]> [<CommonParameters>]
+
 "@ -f $highLight,$reset,$cmdStyle
 
 $P5 = @"
-
 And a more detailed {0}description{1}.
 
 DESCRIPTION
     The `Get-Process` cmdlet gets the processes on a local computer.
     ...
+
 "@ -f $highLight,$reset
 
 $P6 = @"
@@ -97,6 +100,7 @@ SYNOPSIS
     {2}Example 2: Get all available data about one or more processes {1}
 
     Get-Process winword, explorer | Format-List *
+
 "@ -f $cmdStyle,$reset,$highLight2,$cmdStyle,$defaultTokenStyle,$paramStyle
 
 $P7 = @"
@@ -114,6 +118,7 @@ RELATED LINKS
     Start-Process
     Stop-Process
     Wait-Process
+
 "@ -f $highLight,$reset,$highLight2
 
 $P8 = @"
@@ -128,10 +133,10 @@ SYNTAX
 
 Each combination of parameters is referred as a {0}parameter set{1}. You cannot mix and match
 parameters between sets. For now, you can ignore CommonParameters.
+
 "@ -f $highLight,$reset
 
 $P9 = @"
-
 Anything you see enclosed in [ ] is considered {0}optional{2}. This means that if you want to use
 the {4}Id{2} parameter, you must specify it because it is not enclosed in [ ].
 
@@ -140,13 +145,17 @@ SYNTAX
 
     Get-Process [-FileVersionInfo] {1}-Id{2} <System.Int32[]> [-Module] [<CommonParameters>]
     ...
-$prompt {3}Get-Process{2} {4}-Id{2} {5}$PIO{2}
+
+$prompt {3}Get-Process{2} {4}-Id{2} {5}`$PID{2}
 "@ -f $highLight,$highLight3,$reset,$cmdStyle,$paramStyle,$varStyle
 
 $P10 = @"
 
-{0}`$PID{4} is an automatic variable whose value is the process ID for the current PowerShell session.
+{0}`$PID{1} is an automatic variable whose value is the process ID for the current PowerShell session.
 
+"@ -f $highLight,$reset
+
+$P10a = @"
 Looking at the syntax again, you can use the {1}Name{4} parameter without having to type it because
 the parameter name is enclosed in [ ].
 
@@ -165,15 +174,14 @@ $prompt {3}Get-Process{4} {5}pwsh,sys*{4}
 "@ -f $highLight,$highLight2,$highlight3,$cmdStyle,$reset,$defaultTokenStyle
 
 $P11 = @"
-
 You can always look at parameter detail in the help. You can specify parameter names using wildcards.
 
-$prompt {0}help{3} {2}Get-Process{3} {1}-ParameterName{3} {2}*name{3}
+$prompt {0}help{3} {2}Get-Process{3} {1}-Parameter{3} {2}*name{3}
 "@ -f $cmdStyle,$paramStyle,$defaultTokenStyle,$reset
 
 $P12 = @"
-Do you see how parameters are defined as positional or named? The detail also indicates if it is a
-required parameter. Compare this information to how it is displayed in the help.
+Do you see how these parameters are defined as positional or named? The detail also indicates
+if it is a required parameter. Compare this information to how it is displayed in the help.
 
     Get-Process [[-Name] <System.String[]>] [-FileVersionInfo] [-Module] [<CommonParameters>]
     Get-Process -Id <System.Int32[]> -IncludeUserName [<CommonParameters>]
@@ -182,20 +190,20 @@ required parameter. Compare this information to how it is displayed in the help.
 
 If you wanted to see all PowerShell processes and those beginning with {0}sys{1} AND show the
 user name, do you have an idea of what command you would type?
+
 "@ -f $highLight2,$reset
 
 $P13 = @"
-
 $prompt {0}Get-Process{3} {1}pwsh,sys*{3} {2}-IncludeUsername{3}
 "@ -f $cmdStyle,$defaultTokenStyle,$paramStyle,$reset
 
 $P14 = @"
 
 The more time you spend reading help, the easier it will become.
+
 "@
 
 $P15 = @"
-
 One last help item you need to know are the {0}about{4} topics. These are help files about
 PowerShell concepts and terminology. All of these topics begin with {1}about_{4}.
 
@@ -205,6 +213,7 @@ the topic name.
 $prompt {2}help{4} {3}about_parameters{4}
 
 Now, if you haven't done so in a while, go ahead run {2}Update-Help{4}.
+
 "@ -f $highLight,$highLight2,$cmdStyle,$defaultTokenStyle,$reset
 
 #run the tutorial
@@ -225,6 +234,7 @@ Pause
 Clear-Host
 $P6
 Pause
+Clear-Host
 $P7
 Pause
 Clear-Host
@@ -234,10 +244,15 @@ $P9
 Get-Process -id $pid | Out-Host
 pause
 $P10
+pause
+Clear-Host
+$P10a
 Get-Process -name pwsh,sys* | Out-Host
 pause
+Clear-Host
 $P11
 Get-Help Get-Process -Parameter *name | Out-Host
+"`e[3A"
 pause
 $P12
 Pause
@@ -251,6 +266,6 @@ $P15
 if ($Full) {
     &"$PSScriptRoot\..\tutorials\Invoke-GetMemberTutorial.ps1" -Full
 }
-else {
+elseif ($menu) {
     Start-PSTutorial
 }

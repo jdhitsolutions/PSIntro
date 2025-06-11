@@ -75,7 +75,7 @@ Accept wildcard characters: False
 
 ### -Tutorial
 
-Show the tutorial prompt. If you select Yes, the tutorials will run consecutively, in order. If you select No, the command will exit without running any tutorials. Run Start-PSTutorial to run the tutorials at any time and in any order.
+Show the tutorial prompt. If you select Yes, the tutorials will run consecutively, in order. If you select No, the command will exit without running any tutorials. You can run Start-PSTutorial to launch the tutorials at any time and in any order.
 
 ```yaml
 Type: SwitchParameter

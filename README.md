@@ -6,7 +6,7 @@ This is a reference module for PowerShell beginners.
 
 ## [Get-PSIntro](docs/Get-PSIntro.md)
 
-When the user starts PowerShell, they can be presented with this welcome screen.
+When the user starts PowerShell, they can be presented with this welcome or "splash" screen.
 
 ![PSIntro](images/psintro.png)
 
@@ -40,7 +40,13 @@ The module includes a set of interactive tutorials. Running `Start-Tutorial` pre
 
 ![Start-Tutorial](images/start-pstutorial.png)
 
-If the user elects to run tutorials from the welcome screen, the three tutorials will be run consecutively.
+Or the user can run the command specifying a topic.
+
+```powershell
+PS C:\> Start-Tutorial 'Get-Command'
+```
+
+If the user elects to run tutorials from the welcome screen, the tutorials will be run consecutively in a pre-defined order. No menu will be presented.
 
 ![Get-Command tutorial](images/gcm-tutorial.png)
 

@@ -70,7 +70,7 @@ $head
             Write-Host "No problem. You can run $($cmdStyle)Start-PSTutorial$($reset) at any time.`n"
         }
         Else {
-            &"$PSScriptRoot\..\tutorials\Invoke-GetCommandTutorial.ps1" -Full
+            &"$PSScriptRoot\..\tutorials\Invoke-PSBasicsTutorial.ps1" -Full
         }
     }
 }

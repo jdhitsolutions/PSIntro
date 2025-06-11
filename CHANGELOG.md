@@ -5,6 +5,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.0] - 2025-06-11
+
+### Added
+
+- Added tutorial for PowerShell essentials and fundamentals.
+
+### Changed
+
+- Modified `Start-PSTutorial` to allow user to specify a topic. If no topic is specified, the user will get the menu.
+- Updated the `Get-Member` tutorial.
+- Updated the `Get-Help` tutorial.
+- Updated the `Get-Command` tutorial.
+- Help updates
+- Updated `README`.
+
 ## [0.6.0] - 2025-05-30
 
 ### Added
@@ -40,5 +55,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release to GitHub
 
-[Unreleased]: https://github.com/jdhitsolutions/PSIntro/compare/v0.6.0..HEAD
+[Unreleased]: https://github.com/jdhitsolutions/PSIntro/compare/v0.7.0..HEAD
+[0.7.0]: https://github.com/jdhitsolutions/PSIntro/compare/v0.6.0..v0.7.0
 [0.6.0]: https://github.com/jdhitsolutions/PSIntro/compare/v0.5.0..v0.6.0

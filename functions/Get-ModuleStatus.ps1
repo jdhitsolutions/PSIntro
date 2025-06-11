@@ -8,6 +8,7 @@ Function Get-ModuleStatus {
     )
 
     $find = Find-Module $Module
+
     ForEach ($item in $find) {
         $local = Get-Module $item.Name -ListAvailable |
         Sort-Object -Property Version |
@@ -20,5 +21,4 @@ Function Get-ModuleStatus {
             UpdateNeeded = $item.Version -gt $local
         }
     }
-
 }

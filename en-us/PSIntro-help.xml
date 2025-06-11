@@ -123,7 +123,7 @@ PSReadLine                         2.3.6  2.3.6            False</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Tutorial</maml:name>
           <maml:description>
-            <maml:para>Show the tutorial prompt. If you select Yes, the tutorials will run consecutively, in order. If you select No, the command will exit without running any tutorials. Run Start-PSTutorial to run the tutorials at any time and in any order.</maml:para>
+            <maml:para>Show the tutorial prompt. If you select Yes, the tutorials will run consecutively, in order. If you select No, the command will exit without running any tutorials. You can run Start-PSTutorial to launch the tutorials at any time and in any order.</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -149,7 +149,7 @@ PSReadLine                         2.3.6  2.3.6            False</dev:code>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Tutorial</maml:name>
         <maml:description>
-          <maml:para>Show the tutorial prompt. If you select Yes, the tutorials will run consecutively, in order. If you select No, the command will exit without running any tutorials. Run Start-PSTutorial to run the tutorials at any time and in any order.</maml:para>
+          <maml:para>Show the tutorial prompt. If you select Yes, the tutorials will run consecutively, in order. If you select No, the command will exit without running any tutorials. You can run Start-PSTutorial to launch the tutorials at any time and in any order.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -232,14 +232,47 @@ All key modules are up to date.</dev:code>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>This command presents a simple menu of interactive PowerShell tutorials. At the completion of each tutorial, the user is returned to the menu.</maml:para>
+      <maml:para>This command serves as a launcher for the tutorials included in the PSIntro module. You can select a tutorial topic. If you don't specify a topic, you will get a simple menu of interactive PowerShell tutorials.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Start-PSTutorial</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+          <maml:name>Topic</maml:name>
+          <maml:description>
+            <maml:para>Specify a tutorial topic otherwise you will be presented with a menu of topics. Valid topics are:</maml:para>
+            <maml:para>- PowerShell Essentials</maml:para>
+            <maml:para>- Get-Command</maml:para>
+            <maml:para>- Get-Help</maml:para>
+            <maml:para>- Get-Member</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
-    <command:parameters />
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+        <maml:name>Topic</maml:name>
+        <maml:description>
+          <maml:para>Specify a tutorial topic otherwise you will be presented with a menu of topics. Valid topics are:</maml:para>
+          <maml:para>- PowerShell Essentials</maml:para>
+          <maml:para>- Get-Command</maml:para>
+          <maml:para>- Get-Help</maml:para>
+          <maml:para>- Get-Member</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
     <command:inputTypes>
       <command:inputType>
         <dev:type>
@@ -270,16 +303,24 @@ All key modules are up to date.</dev:code>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
         <dev:code>PS C:\&gt; Start-PSTutorial
 
-    Tutorial Menu
+    PowerShell Tutorial Menu
 
-    1 - Get-Command
-    2 - Get-Help
-    3 - Get-Member
-    4 - Quit
+    1 - PowerShell Essentials
+    2 - Get-Command
+    3 - Get-Help
+    4 - Get-Member
+    5 - Quit
 
-    Select a menu option [1-4]:</dev:code>
+    Select a menu option [1-5]:</dev:code>
         <dev:remarks>
-          <maml:para></maml:para>
+          <maml:para>The menu title will be formatted using $PSStyle.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Start-PSTutorial -Topic 'Get-Command'</dev:code>
+        <dev:remarks>
+          <maml:para>Launch the Get-Command tutorial.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
