@@ -8,6 +8,7 @@ Param(
 $cmd = 'Get-Member'
 $title = "$($titleStyle)Getting Started with $cmd$reset"
 
+#region content
 $Intro = @"
 
 The {0}$cmd{1} cmdlet is one that you will use often in PowerShell. You will get more out of
@@ -150,7 +151,8 @@ so that you can use it with PowerShell commands and take advantage of the PowerS
 For more information, read the help for {0}Get-Member{1} and look at the examples.
 
 "@ -f $cmdStyle,$reset
-#run the tutorial
+#endregion
+#region run the tutorial
 Clear-Host
 $title
 $Intro
@@ -186,6 +188,7 @@ Select-Object ID,Handles,WS,Name,StartTime -first 5 | Format-Table | Out-Host
 pause
 Clear-Host
 $P9
+#endregion
 
 if ($Full) {
   #this is the last lesson in the set. No action needed.

@@ -13,6 +13,7 @@ else {
 }
 $title = "$($titleStyle)Essential PowerShell Fundamentals$($reset)"
 
+#region content
 $intro = @"
 
 To get started with PowerShell, there are a few essential concepts and terms that you should
@@ -175,8 +176,8 @@ Once you complete the other tutorials, you should be able to begin running Power
 from the console.
 
 "@
-
-## Run the tutorial
+#endregion
+#region Run the tutorial
 Clear-Host
 
 $title
@@ -245,6 +246,8 @@ $P17a
 $PSVersionTable | Out-Host
 $P18
 pause
+
+#endregion
 
 if ($full) {
     &$tutorials['Get-Command'] -Full

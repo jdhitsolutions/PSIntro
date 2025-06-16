@@ -6,6 +6,8 @@ Param(
 
 $cmd = 'Get-Help'
 $title = "$($titleStyle)Getting Started with $cmd$reset"
+
+#region content
 $Intro = @"
 
 {0}$cmd{1} is another of the basic PowerShell cmdlets you need to understand how to use. You
@@ -215,8 +217,8 @@ $prompt {2}help{4} {3}about_parameters{4}
 Now, if you haven't done so in a while, go ahead run {2}Update-Help{4}.
 
 "@ -f $highLight,$highLight2,$cmdStyle,$defaultTokenStyle,$reset
-
-#run the tutorial
+#endregion
+#region run the tutorial
 Clear-Host
 $title
 $Intro
@@ -262,6 +264,7 @@ $P14
 Pause
 Clear-Host
 $P15
+#endregion
 
 if ($Full) {
     &$tutorials['Get-Member'] -Full

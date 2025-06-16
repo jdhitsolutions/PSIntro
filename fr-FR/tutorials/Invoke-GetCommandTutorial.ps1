@@ -8,6 +8,7 @@ $cmd = 'Get-Command'
 
 $title = "$($titleStyle)Démarrer avec Get-Command$reset"
 
+#region content
 $Intro = @"
 
 {0}Get-Command{2} est l'une des cmdlets fondamentales de PowerShell. Vous pouvez utiliser cette commande pour
@@ -72,8 +73,8 @@ une indication du type de valeur de paramètre que vous devez spécifier.
 Pour mieux comprendre les paramètres, utilisez {2}Get-Help{1} pour en savoir plus.
 
 "@ -f $highLight,$reset,$cmdStyle,$paramStyle
-
-#run the tutorial
+#endregion
+#region run the tutorial
 Clear-Host
 $title
 $Intro
@@ -98,6 +99,7 @@ Get-Command Get-Process -Syntax | Out-Host
 pause
 
 $P6
+#endregion
 
 if ($full) {
     &$tutorials['Get-Help'] -Full
