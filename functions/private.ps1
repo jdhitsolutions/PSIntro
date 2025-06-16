@@ -1,7 +1,7 @@
 #these are private helper functions
 
 function pause {
-    [void](Read-Host "`e[3;37mEnter to continue$($PSStyle.Reset)")
+    [void](Read-Host "`e[3;37m$($strings.continue)$($PSStyle.Reset)")
     "`e[2A"
     "`e[K"
     "`e[3A"

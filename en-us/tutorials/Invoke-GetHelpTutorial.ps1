@@ -264,7 +264,7 @@ Clear-Host
 $P15
 
 if ($Full) {
-    &"$PSScriptRoot\..\tutorials\Invoke-GetMemberTutorial.ps1" -Full
+    &$tutorials['Get-Member'] -Full
 }
 elseif ($menu) {
     Start-PSTutorial

@@ -11,9 +11,9 @@ Function Start-PSTutorial {
      )
 
     $list = @"
-    $($PSStyle.Underline+$PSStyle.Foreground.Green)PowerShell Tutorial Menu$($PSStyle.Reset)
+    $($PSStyle.Underline+$PSStyle.Foreground.Green)$($strings.menuTitle)$($PSStyle.Reset)
 
-    1 - PowerShell Essentials
+    1 - $($strings.psEssentials)
     2 - Get-Command
     3 - Get-Help
     4 - Get-Member
@@ -22,23 +22,19 @@ Function Start-PSTutorial {
 "@
 
     If ($PSBoundParameters.ContainsKey('Topic')) {
-        Switch ($Topic) {
-            'PowerShell Essentials' { &"$PSScriptRoot\..\tutorials\Invoke-PSBasicsTutorial.ps1" }
-            'Get-Command' { &"$PSScriptRoot\..\tutorials\Invoke-GetCommandTutorial.ps1" }
-            'Get-Help' { &"$PSScriptRoot\..\tutorials\Invoke-GetHelpTutorial.ps1" }
-            'Get-Member' { &"$PSScriptRoot\..\tutorials\Invoke-GetMemberTutorial.ps1" }
-        }
+        #launch the tutorial from the module-scoped hashtable
+        & $Tutorials[$Topic]
     }
     else {
         Clear-Host
         $list
-        [int]$r = Read-Host '    Select a menu option [1-5]'
+        [int]$r = Read-Host "    $($strings.menuSelect) [1-5]"
 
         Switch ($r) {
-            1 { &"$PSScriptRoot\..\tutorials\Invoke-PSBasicsTutorial.ps1" -menu }
-            2 { &"$PSScriptRoot\..\tutorials\Invoke-GetCommandTutorial.ps1" -menu}
-            3 { &"$PSScriptRoot\..\tutorials\Invoke-GetHelpTutorial.ps1" -menu }
-            4 { &"$PSScriptRoot\..\tutorials\Invoke-GetMemberTutorial.ps1" -menu}
+            1 { &$tutorials['PowerShell Essentials'] -menu }`
+            2 { &$tutorials['Get-Command'] -menu}
+            3 { &$tutorials['Get-Help'] -menu }
+            4 { &$tutorials['Get-Member'] -menu}
         }
     }
 }

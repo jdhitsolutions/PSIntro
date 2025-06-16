@@ -2,7 +2,9 @@
 
 ![](images/PowerShell-transparent-thumb.jpg)
 
-This is a reference module for PowerShell beginners.
+This is a reference module for PowerShell beginners. Beginning with v0.8.0 message strings are localized for en-US and fr-FR cultures. Tutorials have been translated from English using Claude Sonnet 3.7.
+
+> __This is a private repository during development. This module is not available on the PowerShell Gallery.__
 
 ## [Get-PSIntro](docs/Get-PSIntro.md)
 
@@ -62,6 +64,5 @@ The tutorials use $PSStyle for formatting.
 
 This is a list of items under consideration for future development.
 
-- Move tutorials to culture folder so that they can be localized.
 - Are there other key modules that should be included?
 - Update `Get-PSIntro` to show the splash screen only once every 24 hours.

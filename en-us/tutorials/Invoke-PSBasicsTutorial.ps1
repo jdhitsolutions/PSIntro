@@ -247,7 +247,7 @@ $P18
 pause
 
 if ($full) {
-    &"$PSScriptRoot\..\tutorials\Invoke-GetCommandTutorial.ps1" -Full
+    &$tutorials['Get-Command'] -Full
 }
 elseif ($Menu) {
     Start-PSTutorial

@@ -99,7 +99,7 @@ pause
 $P6
 
 if ($full) {
-    &"$PSScriptRoot\..\tutorials\Invoke-GetHelpTutorial.ps1" -Full
+    &$tutorials['Get-Help'] -Full
 }
 elseif ($menu) {
     Start-PSTutorial

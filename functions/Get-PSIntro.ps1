@@ -25,20 +25,18 @@ Function Get-PSIntro {
     $head = Format-BorderBox -Text $Text -Title $title -BorderColor $PSStyle.Foreground.BrightGreen
     $intro = @"
 
-$($PSStyle.Bold)Welcome to PowerShell!$($reset)
+$($PSStyle.Bold)$($strings.welcome)$($reset)
 $head
 
-  Use any of the links above to get started learning more about PowerShell.
-  When you can, you should run $($cmdStyle)$($PSStyle.FormatHyperlink('Update-Help','https://learn.microsoft.com/powershell/module/microsoft.powershell.core/update-help?view=powershell
--7.5&WT.mc_id=ps-gethelp'))$($reset) to get the latest help files for PowerShell.
-
+  $($strings.welcome_1)
+  $($strings.welcome_2 -f $cmdStyle,$PSStyle.FormatHyperlink('Update-Help', 'https://learn.microsoft.com/powershell/module/microsoft.powershell.core/update-help?view=powershell-7.5&WT.mc_id=ps-gethelp'), $reset)
 "@
 
     $intro
 
     if ($ModuleStatus) {
         $ModuleInfo = Get-ModuleStatus
-        '{0}{1}{2}' -f $cmdStyle, 'Key module status:', $reset
+        '{0}{1}{2}' -f $cmdStyle, $strings.key, $reset
         #create a custom formatted table. Normally this is not a best practice
         #but the output of this command is a presentation of information
         $ModuleInfo | Format-Table Name, @{Name = 'Online'; Expression = { $_.Online }; align = 'right' },
@@ -54,23 +52,23 @@ $head
     }
 
     If ($ModuleInfo.UpdateNeeded -contains $True) {
-        Write-Host "$($warnStyle)You may need to update or install the modules listed above.$($reset)"
+        Write-Host "$($warnStyle)$($strings.UpdateNeeded)$($reset)"
     }
     Else {
-        Write-Host "$($highLight2)All key modules are up to date.$($reset)"
+        Write-Host "$($highLight2)$($strings.upToDate)$($reset)"
     }
 } #if ModuleStatus
 
     If ($Tutorial) {
         $promptStyle
-        $r = Read-Host -Prompt 'Would you like to run a short interactive tutorial? (Y/N)'
+        $r = Read-Host -Prompt $strings.tutorialPrompt
         $reset
 
         If ($r -ne 'y') {
-            Write-Host "No problem. You can run $($cmdStyle)Start-PSTutorial$($reset) at any time.`n"
+            Write-Host ($strings.tutorialSkip -f $cmdStyle,$reset)
         }
         Else {
-            &"$PSScriptRoot\..\tutorials\Invoke-PSBasicsTutorial.ps1" -Full
+            &$tutorials['PowerShell Essentials'] -Full
         }
     }
 }
