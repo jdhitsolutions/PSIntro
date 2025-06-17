@@ -1,15 +1,13 @@
-﻿# Changelog for PSIntro
-
-## v[0.8.0] - 2025-06-16 14:32:48
-
-### Added
-
-- Added localization of string data for messaging and prompts. Command help has __not__ been localized.
-- Added French localization for the module including tutorials.
+﻿# Changelog for PSIntro
+## v[0.9.0] - 2025-06-17 17:49:18
 
 ### Changed
 
-- Moved tutorials to culture-specific folder and updated code to use culture-aware versions.
-- Updated `README.md`.
+- Corrected casing on en-US folder which was affecting localization on non-Windows systems.
 
-[0.8.0]: https://github.com/jdhitsolutions/PSIntro/compare/v0.7.0...v0.8.0
+### Fixed
+
+- Changed tutorial prompt to use Y as the continuation character for all cultures.
+- Fixed localization issues on non-Windows systems where no culture is detected. [[Issue #6](https://github.com/jdhitsolutions/PSIntro/issues/6)]
+
+[0.9.0]: https://github.com/jdhitsolutions/PSIntro/compare/v0.8.0...v0.9.0

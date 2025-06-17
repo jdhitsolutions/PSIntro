@@ -2,7 +2,6 @@
 # Module manifest for module 'PSIntro'
 #
 @{
-
     RootModule           = 'PSIntro.psm1'
     ModuleVersion        = '0.9.0'
     CompatiblePSEditions = 'Core'
