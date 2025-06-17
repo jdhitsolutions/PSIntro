@@ -30,6 +30,7 @@ $head
 
   $($strings.welcome_1)
   $($strings.welcome_2 -f $cmdStyle,$PSStyle.FormatHyperlink('Update-Help', 'https://learn.microsoft.com/powershell/module/microsoft.powershell.core/update-help?view=powershell-7.5&WT.mc_id=ps-gethelp'), $reset)
+
 "@
 
     $intro
@@ -61,11 +62,11 @@ $head
 
     If ($Tutorial) {
         $promptStyle
-        $r = Read-Host -Prompt $strings.tutorialPrompt
+        $r = Read-Host -Prompt "  $($strings.tutorialPrompt)`n  $($strings.tutorialContinue)"
         $reset
 
         If ($r -ne 'y') {
-            Write-Host ($strings.tutorialSkip -f $cmdStyle,$reset)
+            Write-Host "$($strings.tutorialSkip -f $cmdStyle,$reset)`n"
         }
         Else {
             &$tutorials['PowerShell Essentials'] -Full

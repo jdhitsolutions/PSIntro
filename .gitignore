@@ -1,0 +1,6 @@
+New-ReleaseChangeLog.ps1
+PrepNewRelease.ps1
+dev\*
+pdf.yml
+ExportToPDF.ps1
+GetReleaseNote.ps1

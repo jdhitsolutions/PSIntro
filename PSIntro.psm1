@@ -1,5 +1,11 @@
 #write-host "Detected $((Get-Culture).name)"
-Import-LocalizedData -BindingVariable strings
+# 17 June 2025 - need accommodate culture detection problems on non-Windows systems Issue #6
+$culture = $PSUICulture ? $PSUICulture : "en-US"
+$baseDir = Join-Path -Path $PSScriptRoot -ChildPath $culture
+Write-Host "Imported strings from $baseDir"
+write-host "Detected culture: $culture"
+Import-LocalizedData -BindingVariable strings -UICulture $culture
+# -BaseDirectory $baseDir #-FileName PSIntro.psd1
 
 Get-ChildItem -Path $PSScriptRoot\functions\*.ps1 |
 ForEach-Object { . $_.FullName }
@@ -25,7 +31,8 @@ $table = $PSStyle.Formatting.TableHeader
 $prompt = ((&prompt | Out-String) -replace "`n|`r", '').Trim()
 
 #determine the tutorial path
-$tutorialPath = Join-Path -Path $PSScriptRoot -ChildPath (Join-Path -path (Get-Culture).Name -ChildPath 'tutorials')
+
+$tutorialPath = Join-Path -Path $PSScriptRoot -ChildPath (Join-Path -path $culture -ChildPath 'tutorials')
 if (-Not (Test-Path -Path $tutorialPath)) {
     #use the en-US tutorials if the localized path does not exist
     $tutorialPath = Join-Path -Path $PSScriptRoot -ChildPath 'en-us\tutorials'

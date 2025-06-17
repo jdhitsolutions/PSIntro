@@ -11,6 +11,7 @@ if ($isWindows) {
 else {
     $root = "/"
 }
+
 $title = "$($titleStyle)Essential PowerShell Fundamentals$($reset)"
 
 #region content
