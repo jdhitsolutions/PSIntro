@@ -1,7 +1,7 @@
 ---
 external help file: PSIntro-help.xml
 Module Name: PSIntro
-online version:
+online version: https://jdhitsolutions.com/yourls/4d142b
 schema: 2.0.0
 ---
 
@@ -32,7 +32,7 @@ PS C:\> Get-PSIntro -ModuleStatus
 
 Welcome to PowerShell!
 
-      PowerShell v7.5.1
+      PowerShell v7.5.4
  PowerShell Documentation  : https://learn.microsoft.com/powershell
  PowerShell on Slack       : https//aka.ms/psslack
  PowerShell on Discord     : https://aka.ms/psdiscord
@@ -47,19 +47,43 @@ Key module status:
 
 Name                               Online Installed UpdateNeeded
 ----                               ------ --------- ------------
-PSReadline                          2.3.6     2.3.6    False
+PSReadLine                          2.4.5     2.4.5    False
 Microsoft.PowerShell.PSResourceGet  1.1.1     1.1.1    False
 
-All key modules are up to date.
+  All key modules are up to date.
+
+  Run Start-PSTutorial for a list of brief PowerShell tutorials.
 ```
 
 The output will for formatted and styled using $PSStyle. The links will be clickable in Windows Terminal or similar.
+
+### Example 2
+
+```powershell
+Welcome to PowerShell!
+
+      PowerShell v7.5.4
+ PowerShell Documentation  : https://learn.microsoft.com/powershell
+ PowerShell on Slack       : https//aka.ms/psslack
+ PowerShell on Discord     : https://aka.ms/psdiscord
+ PowerShell Team Blog      : https://devblogs.microsoft.com/powershell
+ PowerShell Gallery        : https://www.powershellgallery.com
+ GitHub Discussion         : https://github.com/PowerShell/PowerShell/discussions
+
+  Use any of the links above to get started learning more about PowerShell.
+  When you can, you should run Update-Help to get the latest help files for PowerShell.
+
+  Would you like to run a set of short interactive tutorial on essential PowerShell fundamentals?
+  Enter Y to continue:
+```
+
+Launch the introduction with the tutorial prompt.
 
 ## PARAMETERS
 
 ### -ModuleStatus
 
-Include module status.
+Include key module status.
 
 ```yaml
 Type: SwitchParameter
@@ -104,6 +128,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 This command has aliases of PSIntro and PSWelcome.
+
+Learn more about PowerShell: http://jdhitsolutions.com/yourls/newsletter
 
 ## RELATED LINKS
 

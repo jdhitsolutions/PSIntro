@@ -15,32 +15,32 @@
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Get-ModuleStatus</maml:name>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
           <maml:name>Module</maml:name>
           <maml:description>
-            <maml:para>The module names to check. As of v0.5.0 the PSReadline and Microsoft.PowerShell.PSResourceGet modules are included by default.  The design of this parameter should be considered under development for now.</maml:para>
+            <maml:para>The module names to check. The PSReadline and Microsoft.PowerShell.PSResourceGet modules are included by default.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
           <dev:type>
             <maml:name>String[]</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
+          <dev:defaultValue>PSReadline, Microsoft.PowerShell.PSResourceGet</dev:defaultValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
         <maml:name>Module</maml:name>
         <maml:description>
-          <maml:para>The module names to check. As of v0.5.0 the PSReadline and Microsoft.PowerShell.PSResourceGet modules are included by default.  The design of this parameter should be considered under development for now.</maml:para>
+          <maml:para>The module names to check. The PSReadline and Microsoft.PowerShell.PSResourceGet modules are included by default.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
         <dev:type>
           <maml:name>String[]</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
+        <dev:defaultValue>PSReadline, Microsoft.PowerShell.PSResourceGet</dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes>
@@ -75,10 +75,40 @@
 
 Name                               Online Installed UpdateNeeded
 ----                               ------ --------- ------------
-Microsoft.PowerShell.PSResourceGet 1.1.1  1.1.1            False
-PSReadLine                         2.3.6  2.3.6            False</dev:code>
+PSReadLine                         2.4.5  2.4.5            False
+Microsoft.PowerShell.PSResourceGet 1.1.1  1.1.1            False</dev:code>
         <dev:remarks>
           <maml:para></maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Get-ModuleStatus -Module Pester,PSReadline,PackageManagement
+
+Name              Online  Installed UpdateNeeded
+----              ------  --------- ------------
+Pester            5.7.1   5.7.1            False
+PSReadLine        2.4.5   2.4.5            False
+PackageManagement 1.4.8.1 1.4.8.1          False</dev:code>
+        <dev:remarks>
+          <maml:para>Check the status of user-specified modules.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 3 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Get-Content C:\scripts\MyModules.txt | Get-ModuleStatus
+
+Name                                 Online   Installed UpdateNeeded
+----                                 ------   --------- ------------
+Microsoft.PowerShell.ConsoleGuiTools 0.7.7    0.7.7            False
+Microsoft.PowerShell.Crescendo       1.1.0    1.1.0            False
+Microsoft.PowerShell.PlatyPS         1.0.1    1.0.1            False
+Microsoft.PowerShell.PSResourceGet   1.1.1    1.1.1            False
+Microsoft.WinGet.Client              1.11.460 1.12.350         False
+Microsoft.PowerShell.WhatsNew        0.5.5    0.5.5            False
+Microsoft.PowerShell.ThreadJob       2.2.0    2.2.0            False</dev:code>
+        <dev:remarks>
+          <maml:para>Check module status from a list.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -112,7 +142,7 @@ PSReadLine                         2.3.6  2.3.6            False</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>ModuleStatus</maml:name>
           <maml:description>
-            <maml:para>Include module status.</maml:para>
+            <maml:para>Include key module status.</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -137,7 +167,7 @@ PSReadLine                         2.3.6  2.3.6            False</dev:code>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>ModuleStatus</maml:name>
         <maml:description>
-          <maml:para>Include module status.</maml:para>
+          <maml:para>Include key module status.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -182,6 +212,7 @@ PSReadLine                         2.3.6  2.3.6            False</dev:code>
     <maml:alertSet>
       <maml:alert>
         <maml:para>This command has aliases of PSIntro and PSWelcome.</maml:para>
+        <maml:para>Learn more about PowerShell: http://jdhitsolutions.com/yourls/newsletter</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -191,7 +222,7 @@ PSReadLine                         2.3.6  2.3.6            False</dev:code>
 
 Welcome to PowerShell!
 
-      PowerShell v7.5.1
+      PowerShell v7.5.4
  PowerShell Documentation  : https://learn.microsoft.com/powershell
  PowerShell on Slack       : https//aka.ms/psslack
  PowerShell on Discord     : https://aka.ms/psdiscord
@@ -206,16 +237,43 @@ Key module status:
 
 Name                               Online Installed UpdateNeeded
 ----                               ------ --------- ------------
-PSReadline                          2.3.6     2.3.6    False
+PSReadLine                          2.4.5     2.4.5    False
 Microsoft.PowerShell.PSResourceGet  1.1.1     1.1.1    False
 
-All key modules are up to date.</dev:code>
+  All key modules are up to date.
+
+  Run Start-PSTutorial for a list of brief PowerShell tutorials.</dev:code>
         <dev:remarks>
           <maml:para>The output will for formatted and styled using $PSStyle. The links will be clickable in Windows Terminal or similar.</maml:para>
         </dev:remarks>
       </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>Welcome to PowerShell!
+
+      PowerShell v7.5.4
+ PowerShell Documentation  : https://learn.microsoft.com/powershell
+ PowerShell on Slack       : https//aka.ms/psslack
+ PowerShell on Discord     : https://aka.ms/psdiscord
+ PowerShell Team Blog      : https://devblogs.microsoft.com/powershell
+ PowerShell Gallery        : https://www.powershellgallery.com
+ GitHub Discussion         : https://github.com/PowerShell/PowerShell/discussions
+
+  Use any of the links above to get started learning more about PowerShell.
+  When you can, you should run Update-Help to get the latest help files for PowerShell.
+
+  Would you like to run a set of short interactive tutorial on essential PowerShell fundamentals?
+  Enter Y to continue:</dev:code>
+        <dev:remarks>
+          <maml:para>Launch the introduction with the tutorial prompt.</maml:para>
+        </dev:remarks>
+      </command:example>
     </command:examples>
     <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://jdhitsolutions.com/yourls/4d142b</maml:uri>
+      </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Start-PSTutorial</maml:linkText>
         <maml:uri></maml:uri>
@@ -232,7 +290,8 @@ All key modules are up to date.</dev:code>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>This command serves as a launcher for the tutorials included in the PSIntro module. You can select a tutorial topic. If you don't specify a topic, you will get a simple menu of interactive PowerShell tutorials.</maml:para>
+      <maml:para>This command serves as a launcher for the tutorials included in the PSIntro module. You can select a tutorial topic. If you don't specify a topic, you will get a simple menu of interactive PowerShell tutorials. The tutorial consists of a combination of text and information from your host and PowerShell environment.</maml:para>
+      <maml:para>The tutorial will be displayed in "pages" with prompts to continue. Press `Enter` to continue or 'q' to quit. Your progress will not be saved.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -295,7 +354,7 @@ All key modules are up to date.</dev:code>
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para></maml:para>
+        <maml:para>Learn more about PowerShell: http://jdhitsolutions.com/yourls/newsletter</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -325,6 +384,10 @@ All key modules are up to date.</dev:code>
       </command:example>
     </command:examples>
     <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://jdhitsolutions.com/yourls/63bfe0</maml:uri>
+      </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Get-PSIntro</maml:linkText>
         <maml:uri></maml:uri>

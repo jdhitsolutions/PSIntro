@@ -23,11 +23,11 @@ Function Get-PSIntro {
     )
 
     $head = Format-BorderBox -Text $Text -Title $title -BorderColor $PSStyle.Foreground.BrightGreen
+
     $intro = @"
 
-$($PSStyle.Bold)$($strings.welcome)$($reset)
+$welcomeStyle$($strings.welcome)$($reset)
 $head
-
   $($strings.welcome_1)
   $($strings.welcome_2 -f $cmdStyle,$PSStyle.FormatHyperlink('Update-Help', 'https://learn.microsoft.com/powershell/module/microsoft.powershell.core/update-help?view=powershell-7.5&WT.mc_id=ps-gethelp'), $reset)
 
@@ -37,14 +37,16 @@ $head
 
     if ($ModuleStatus) {
         $ModuleInfo = Get-ModuleStatus
-        '{0}{1}{2}' -f $cmdStyle, $strings.key, $reset
+        '  {0}{1}{2}' -f $cmdStyle, $strings.key, $reset
         #create a custom formatted table. Normally this is not a best practice
         #but the output of this command is a presentation of information
-        $ModuleInfo | Format-Table Name, @{Name = 'Online'; Expression = { $_.Online }; align = 'right' },
+
+        $ModuleInfo |
+        Format-Table Name, @{Name = 'Online'; Expression = { $_.Online }; align = 'right' },
         @{Name = 'Installed'; Expression = { $_.Installed }; align = 'right' },
         @{Name = 'UpdateNeeded'; Expression = {
             If ($_.UpdateNeeded) {
-                "$($PSStyle.Foreground.BrightRed)$($_.UpdateNeeded)$($PSstyle.Reset)"
+                "$($PSStyle.Foreground.BrightRed)$($_.UpdateNeeded)$($PSStyle.Reset)"
             }
             Else {
                 $_.UpdateNeeded
@@ -53,10 +55,10 @@ $head
     }
 
     If ($ModuleInfo.UpdateNeeded -contains $True) {
-        Write-Host "$($warnStyle)$($strings.UpdateNeeded)$($reset)"
+        Write-Host "  $($warnStyle)$($strings.UpdateNeeded)$($reset)"
     }
     Else {
-        Write-Host "$($highLight2)$($strings.upToDate)$($reset)"
+        Write-Host "  $($highLight2)$($strings.upToDate)$($reset)"
     }
 } #if ModuleStatus
 
@@ -66,10 +68,17 @@ $head
         $reset
 
         If ($r -ne 'y') {
-            Write-Host "$($strings.tutorialSkip -f $cmdStyle,$reset)`n"
+            Write-Host "  $($strings.tutorialSkip -f $cmdStyle,$reset)`n"
         }
         Else {
             &$tutorials['PowerShell Essentials'] -Full
         }
+    }
+    else {
+        #display a message about running Start-PSTutorial
+        if ($ModuleStatus) {
+            Write-Host "`n" -NoNewline
+        }
+        Write-Host "  $($strings.tutorialCommand -f $cmdStyle,$reset)`n"
     }
 }

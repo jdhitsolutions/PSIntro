@@ -28,7 +28,7 @@ PowerShell commands are designed to provide information in an easy to read forma
 likely, there is more to the object than what you see on the screen.
 
 That's where {0}Get-Member{1} comes in. You can pipe the output of a command to Get-Member and
-PowerShell will display the properties {4}members{1}. These are the features that describe an
+PowerShell will display the object's {4}members{1}. These are the features that describe an
 object.
 
 "@ -f $cmdStyle,$reset,$defaultTokenStyle,$warnStyle,$highlight

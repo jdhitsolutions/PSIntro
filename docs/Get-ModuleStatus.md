@@ -30,15 +30,47 @@ PS C:\> Get-ModuleStatus
 
 Name                               Online Installed UpdateNeeded
 ----                               ------ --------- ------------
+PSReadLine                         2.4.5  2.4.5            False
 Microsoft.PowerShell.PSResourceGet 1.1.1  1.1.1            False
-PSReadLine                         2.3.6  2.3.6            False
 ```
+
+### Example 2
+
+```powershell
+PS C:\> Get-ModuleStatus -Module Pester,PSReadline,PackageManagement
+
+Name              Online  Installed UpdateNeeded
+----              ------  --------- ------------
+Pester            5.7.1   5.7.1            False
+PSReadLine        2.4.5   2.4.5            False
+PackageManagement 1.4.8.1 1.4.8.1          False
+```
+
+Check the status of user-specified modules.
+
+### Example 3
+
+```powershell
+PS C:\> Get-Content C:\scripts\MyModules.txt | Get-ModuleStatus
+
+Name                                 Online   Installed UpdateNeeded
+----                                 ------   --------- ------------
+Microsoft.PowerShell.ConsoleGuiTools 0.7.7    0.7.7            False
+Microsoft.PowerShell.Crescendo       1.1.0    1.1.0            False
+Microsoft.PowerShell.PlatyPS         1.0.1    1.0.1            False
+Microsoft.PowerShell.PSResourceGet   1.1.1    1.1.1            False
+Microsoft.WinGet.Client              1.11.460 1.12.350         False
+Microsoft.PowerShell.WhatsNew        0.5.5    0.5.5            False
+Microsoft.PowerShell.ThreadJob       2.2.0    2.2.0            False
+```
+
+Check module status from a list.
 
 ## PARAMETERS
 
 ### -Module
 
-The module names to check. As of v0.5.0 the PSReadline and Microsoft.PowerShell.PSResourceGet modules are included by default.  The design of this parameter should be considered under development for now.
+The module names to check. The PSReadline and Microsoft.PowerShell.PSResourceGet modules are included by default.
 
 ```yaml
 Type: String[]
@@ -47,8 +79,8 @@ Aliases:
 
 Required: False
 Position: 0
-Default value: None
-Accept pipeline input: False
+Default value: PSReadline, Microsoft.PowerShell.PSResourceGet
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

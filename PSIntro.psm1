@@ -26,6 +26,7 @@ $highLight3 = $PSStyle.Foreground.BrightYellow + $PSStyle.Bold
 $warnStyle = $PSStyle.Foreground.BrightRed + $PSStyle.Italic
 $promptStyle = "`e[38;5;225m"
 $table = $PSStyle.Formatting.TableHeader
+$welcomeStyle= "`e[1;3;38;5;13m"
 
 #capture the user's prompt text
 $prompt = ((&prompt | Out-String) -replace "`n|`r", '').Trim()
@@ -44,3 +45,6 @@ $Tutorials = @{
     'Get-Help'              = Join-Path -Path $tutorialPath -ChildPath 'Invoke-GetHelpTutorial.ps1'
     'Get-Member'            = Join-Path -Path $tutorialPath -ChildPath 'Invoke-GetMemberTutorial.ps1'
 }
+
+#get module version for use in Verbose messaging
+$modVersion = (Import-PowerShellDataFile -Path "$PSScriptRoot\PSIntro.psd1").ModuleVersion

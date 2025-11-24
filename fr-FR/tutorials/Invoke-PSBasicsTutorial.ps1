@@ -34,10 +34,10 @@ En d'autres termes, si vous pouvez exécuter une commande dans le shell, vous po
 dans un script.
 
 PowerShell est basé sur le framework .NET et adopte une approche orientée {3}objet{1}. Tout ce avec
-quoi vous travaillez dans PowerShell est un objet, et non du texte. Cependant, il n'est pas
-nécessaire d'être développeur .NET pour utiliser PowerShell.
+quoi vous travaillez dans PowerShell est un objet, et non du texte. Cependant, {4}il n'est pas
+nécessaire{1} d'être développeur .NET pour utiliser PowerShell.
 
-"@ -f $highLight3, $reset,$highLight,$highLight2
+"@ -f $highLight3, $reset,$highLight,$highLight2,$PSStyle.Underline
 
 $P2 = @"
 Les commandes PowerShell sont appelées {3}cmdlets{1}. Une cmdlet est une commande légère utilisée pour

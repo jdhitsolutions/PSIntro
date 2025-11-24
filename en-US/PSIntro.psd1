@@ -8,6 +8,7 @@ menuTitle = PowerShell Tutorial Menu
 psEssentials  = PowerShell Essentials
 tutorialPrompt = Would you like to run a set of short interactive tutorial on essential PowerShell fundamentals?
 tutorialContinue = Enter Y to continue
+tutorialCommand = Run {0}Start-PSTutorial{1} for a list of brief PowerShell tutorials.
 tutorialSkip = No problem. You can run {0}Start-PSTutorial{1} at any time.
 updateNeeded = You may need to update or install the modules listed above.
 upToDate = All key modules are up to date.

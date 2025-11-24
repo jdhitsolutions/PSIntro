@@ -27,8 +27,8 @@ Le cmdlet {0}Get-Process{1} écrit un objet qui représente un processus dans le
 commandes PowerShell sont conçues pour fournir des informations dans un format facile à lire. Il y a
 probablement plus dans l'objet que ce que vous voyez à l'écran.
 
-C'est là qu'intervient {0}Get-Member{1}. Vous pouvez diriger la sortie d'une commande vers Get-Member et
-PowerShell affichera les propriétés {4}membres{1}. Ce sont les caractéristiques qui décrivent un
+C'est là qu'intervient {0}Get-Member{1}. Vous pouvez rediriger la sortie d'une commande vers Get-Member et
+PowerShell affichera les {4}membres{1} de l'objet. Ce sont les caractéristiques qui décrivent un
 objet.
 
 "@ -f $cmdStyle,$reset,$defaultTokenStyle,$warnStyle,$highlight

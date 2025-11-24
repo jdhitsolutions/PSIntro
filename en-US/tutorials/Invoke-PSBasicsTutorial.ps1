@@ -33,10 +33,10 @@ and language are used in both. In other words, if you can run a command in the s
 also use it in a script.
 
 PowerShell is built on the .NET framework and takes an {3}object{1} approach. Everything you work
-with in PowerShell is an object, not text. However, you do not need to be a .NET developer to use
+with in PowerShell is an object, not text. However, you {4}do not{1} need to be a .NET developer to use
 PowerShell.
 
-"@ -f $highLight3, $reset,$highLight,$highLight2
+"@ -f $highLight3,$reset,$highLight,$highLight2,$PSStyle.Underline
 
 $P2 = @"
 PowerShell commands are called {3}cmdlets{1}. A cmdlet is a lightweight command that is used to

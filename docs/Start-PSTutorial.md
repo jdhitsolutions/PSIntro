@@ -1,7 +1,7 @@
 ---
 external help file: PSIntro-help.xml
 Module Name: PSIntro
-online version:
+online version: https://jdhitsolutions.com/yourls/63bfe0
 schema: 2.0.0
 ---
 
@@ -19,7 +19,9 @@ Start-PSTutorial [-Topic <String>] [<CommonParameters>]
 
 ## DESCRIPTION
 
-This command serves as a launcher for the tutorials included in the PSIntro module. You can select a tutorial topic. If you don't specify a topic, you will get a simple menu of interactive PowerShell tutorials.
+This command serves as a launcher for the tutorials included in the PSIntro module. You can select a tutorial topic. If you don't specify a topic, you will get a simple menu of interactive PowerShell tutorials. The tutorial consists of a combination of text and information from your host and PowerShell environment.
+
+The tutorial will be displayed in "pages" with prompts to continue. Press `Enter` to continue or 'q' to quit. Your progress will not be saved.
 
 ## EXAMPLES
 
@@ -86,6 +88,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### None
 
 ## NOTES
+
+Learn more about PowerShell: http://jdhitsolutions.com/yourls/newsletter
 
 ## RELATED LINKS
 
