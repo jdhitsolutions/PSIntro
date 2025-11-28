@@ -3,6 +3,8 @@
 function pause {
     $r=(Read-Host "`e[3;37m$($strings.continue)$($PSStyle.Reset)")
     if ($r -eq 'q') {
+        $msg = $strings.tutorialCommand -f $cmdStyle,$reset
+        Write-Host "`n$msg"
         Break
     }
     else {

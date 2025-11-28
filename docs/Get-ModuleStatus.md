@@ -57,7 +57,7 @@ Name                                 Online   Installed UpdateNeeded
 ----                                 ------   --------- ------------
 Microsoft.PowerShell.ConsoleGuiTools 0.7.7    0.7.7            False
 Microsoft.PowerShell.Crescendo       1.1.0    1.1.0            False
-Microsoft.PowerShell.PlatyPS         1.0.1    1.0.1            False
+Microsoft.PowerShell.PlatyPS         1.0.1    1.0.0            True
 Microsoft.PowerShell.PSResourceGet   1.1.1    1.1.1            False
 Microsoft.WinGet.Client              1.11.460 1.12.350         False
 Microsoft.PowerShell.WhatsNew        0.5.5    0.5.5            False

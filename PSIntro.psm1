@@ -1,16 +1,19 @@
-#write-host "Detected $((Get-Culture).name)"
-# 17 June 2025 - need accommodate culture detection problems on non-Windows systems Issue #6
+#Write-Host "Detected $((Get-Culture).name)" -ForegroundColor Yellow
+
+# 17 June 2025 - need to accommodate culture detection problems on non-Windows systems Issue #6
 $culture = $PSUICulture ? $PSUICulture : "en-US"
 $baseDir = Join-Path -Path $PSScriptRoot -ChildPath $culture
-#Write-Host "Imported strings from $baseDir"
-#write-host "Detected culture: $culture"
+
+#Write-Host "Imported strings from $baseDir" -ForegroundColor yellow
+#Write-Host "Detected culture: $culture" -ForegroundColor Yellow
 #need to account for InvariantCulture on non-Windows systems
 Import-LocalizedData -BindingVariable strings -BaseDirectory $baseDir -UICulture (Get-Culture).Name -FileName PSIntro.psd1
 
 Get-ChildItem -Path $PSScriptRoot\functions\*.ps1 |
-ForEach-Object { . $_.FullName }
+ForEach-Object {. $_.FullName }
 
-#Define style settings used in the tutorials
+#Define style settings used in the tutorials using
+#the values defined by the PSReadline module
 $reset = $PSStyle.Reset
 $cmdStyle = (Get-PSReadLineOption).CommandColor
 $defaultTokenStyle = (Get-PSReadLineOption).DefaultTokenColor
@@ -28,8 +31,19 @@ $promptStyle = "`e[38;5;225m"
 $table = $PSStyle.Formatting.TableHeader
 $welcomeStyle= "`e[1;3;38;5;13m"
 
-#capture the user's prompt text
+#capture the user's prompt text. This will be use in the tutorials
+#to simulate a PowerShell session and command
+
+#validate a prompt is captured, otherwise use a default
 $prompt = ((&prompt | Out-String) -replace "`n|`r", '').Trim()
+if ($prompt.Length -eq 0) {
+    if ($IsWindows) {
+        $prompt = "PS C:\> "
+    }
+    else {
+        $prompt = "PS /home/$([Environment]::UserName)>"
+    }
+}
 
 #determine the tutorial path
 $tutorialPath = Join-Path -Path $PSScriptRoot -ChildPath (Join-Path -path $culture -ChildPath 'tutorials')

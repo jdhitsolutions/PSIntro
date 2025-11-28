@@ -21,7 +21,7 @@ Get-PSIntro [-ModuleStatus] [-Tutorial] [<CommonParameters>]
 
 This command will display a PowerShell welcome or "splash" screen. The display includes a list of online resources. If you include the -ModuleStatus parameter, the output will include the status of key modules. Keeping these modules up to date will help ensure a good user experience.
 
-If you include -Tutorial, you will be prompted to run a set of tutorials. The tutorials are interactive and will help the user learn about PowerShell. If the user chooses to run the tutorials, they will be run consecutively. The tutorials are written as PowerShell scripts with a combination of formatted text and live console output from the user's session. This ensures that output is relevant to the user's environment.
+If you include -Tutorial, you will be prompted to run a set of tutorials. The tutorials are interactive and will help the user learn about PowerShell. If the user chooses to run the tutorials, they will be run consecutively. The tutorials are written as PowerShell scripts with a combination of formatted text and live console output from the user's current PowerShell session. This ensures that output is relevant to the user's environment.
 
 ## EXAMPLES
 
@@ -60,6 +60,8 @@ The output will for formatted and styled using $PSStyle. The links will be click
 ### Example 2
 
 ```powershell
+PS C:\> Get-PSIntro -Tutorial
+
 Welcome to PowerShell!
 
       PowerShell v7.5.4

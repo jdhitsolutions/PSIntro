@@ -17,7 +17,7 @@ Function Start-PSTutorial {
     2 - Get-Command
     3 - Get-Help
     4 - Get-Member
-    5 - Quit
+    5 - $($strings.quit)
 
 "@
 

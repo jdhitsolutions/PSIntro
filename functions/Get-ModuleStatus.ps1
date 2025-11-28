@@ -11,22 +11,22 @@ function Get-ModuleStatus {
     )
 
     begin {
-        Write-Verbose "[$((Get-Date).TimeOfDay) BEGIN  ] Starting $($MyInvocation.MyCommand)"
-        Write-Verbose "[$((Get-Date).TimeOfDay) BEGIN  ] Using module version $modVersion"
-        Write-Verbose "[$((Get-Date).TimeOfDay) BEGIN  ] Running under $($PSVersionTable.PSVersion)"
+        Write-Verbose "[$((Get-Date).TimeOfDay) BEGIN  ] $($strings.Starting -f $($MyInvocation.MyCommand))"
+        Write-Verbose "[$((Get-Date).TimeOfDay) BEGIN  ] $($strings.usingVersion -f $modVersion)"
+        Write-Verbose "[$((Get-Date).TimeOfDay) BEGIN  ] $($strings.runningPS -f $($PSVersionTable.PSVersion))"
 
         $moduleList = [System.Collections.Generic.List[string]]::New()
 
     } #begin
     process {
         Foreach ($m in $Module) {
-            Write-Verbose "[$((Get-Date).TimeOfDay) PROCESS] Adding $m to the list"
+            Write-Verbose "[$((Get-Date).TimeOfDay) PROCESS] $($strings.addingModule -f $m)"
             $moduleList.AddRange([string[]]$m)
         }
     } #process
     end {
         Write-Information $moduleList -Tags data
-        Write-Verbose "[$((Get-Date).TimeOfDay) END    ] Validating $($moduleList.count) modules"
+        Write-Verbose "[$((Get-Date).TimeOfDay) END    ] $($strings.validating -f $($moduleList.count))"
         $find = Find-PSResource -Name $moduleList -Type Module -Verbose:$False
 
         foreach ($item in $find) {
@@ -41,6 +41,6 @@ function Get-ModuleStatus {
                 UpdateNeeded = $item.Version -gt $local
             }
         }
-        Write-Verbose "[$((Get-Date).TimeOfDay) END    ] Ending $($MyInvocation.MyCommand)"
+        Write-Verbose "[$((Get-Date).TimeOfDay) END    ] $($strings.ending -f $($MyInvocation.MyCommand))"
     } #end
 }

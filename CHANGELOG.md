@@ -4,12 +4,30 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [0.10.0] - 2025-11-28
+
 ### Added
+
+- Added fr-FR localized help.
+- Added de-DE localized help.
+- Added de-DE localized tutorials.
+- Added verbose localized string data.
+- Added de-DE localized strings.
+- Added quit option to 'Enter to continue' prompt in tutorials.
+- Added license file.
 - Added online help links for English help files.
-- Added a welcome style to the PSIntro screen
+- Added a welcome style to the PSIntro screen.
 
 ### Changed
+
+- Add repository private data to the module manifest.
+- Minor updates to the `Get-Member` tutorial.
 - Revised `Get-ModuleStatus` to use `Find-PSResource` and not `Find-Module`.
+
+### Fixed
+
+- On module import, if prompt can't be captured, define a default prompt.
 
 ## [0.9.0] - 2025-06-17
 
@@ -19,7 +37,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Changed tutorial prompt to use Y as the continuation character for all cultures.
+- Changed tutorial prompt to use `Y` as the continuation character for all cultures.
 - Fixed localization issues on non-Windows systems where no culture is detected. [[Issue #6](https://github.com/jdhitsolutions/PSIntro/issues/6)]
 
 ## [0.8.0] - 2025-06-16
@@ -84,7 +102,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release to GitHub
 
-[Unreleased]: https://github.com/jdhitsolutions/PSIntro/compare/v0.9.0..HEAD
+[Unreleased]: https://github.com/jdhitsolutions/PSIntro/compare/v0.10.0..HEAD
+[0.10.0]: https://github.com/jdhitsolutions/PSIntro/compare/v0.9.0..v0.10.0
 [0.9.0]: https://github.com/jdhitsolutions/PSIntro/compare/v0.8.0..v0.9.0
 [0.8.0]: https://github.com/jdhitsolutions/PSIntro/compare/v0.7.0..v0.8.0
 [0.7.0]: https://github.com/jdhitsolutions/PSIntro/compare/v0.6.0..v0.7.0

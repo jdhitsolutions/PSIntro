@@ -191,7 +191,7 @@ Get-Process pwsh | Out-Host
 pause
 $P3
 pause
-clear-host
+Clear-Host
 $P4
 Pause
 #I am fudging the display
@@ -234,7 +234,6 @@ Clear-Host
 $P14
 $files | Group-Object -property Extension | Sort-Object Count -Descending | Out-Host
 Pause
-
 $P15
 pause
 $P16

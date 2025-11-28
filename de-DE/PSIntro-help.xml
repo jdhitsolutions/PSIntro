@@ -6,11 +6,11 @@
       <command:verb>Get</command:verb>
       <command:noun>ModuleStatus</command:noun>
       <maml:description>
-        <maml:para>Get key module status</maml:para>
+        <maml:para>Ermittelt den Status wichtiger Module</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>Use this command to check the status of key modules. The command will return a list of modules with their online version, installed version, and whether an update is needed.</maml:para>
+      <maml:para>Verwenden Sie diesen Befehl, um den Status wichtiger Module zu überprüfen. Der Befehl gibt eine Liste der Module mit ihrer Online-Version, installierten Version und der Angabe zurück, ob ein Update erforderlich ist.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -18,7 +18,7 @@
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
           <maml:name>Module</maml:name>
           <maml:description>
-            <maml:para>The module names to check. The PSReadline and Microsoft.PowerShell.PSResourceGet modules are included by default.</maml:para>
+            <maml:para>Die zu überprüfenden Modulnamen. Die Module PSReadline und Microsoft.PowerShell.PSResourceGet sind standardmäßig enthalten.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
           <dev:type>
@@ -33,7 +33,7 @@
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
         <maml:name>Module</maml:name>
         <maml:description>
-          <maml:para>The module names to check. The PSReadline and Microsoft.PowerShell.PSResourceGet modules are included by default.</maml:para>
+          <maml:para>Die zu überprüfenden Modulnamen. Die Module PSReadline und Microsoft.PowerShell.PSResourceGet sind standardmäßig enthalten.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
         <dev:type>
@@ -65,7 +65,7 @@
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Learn more about PowerShell: http://jdhitsolutions.com/yourls/newsletter</maml:para>
+        <maml:para>Erfahren Sie mehr über PowerShell: http://jdhitsolutions.com/yourls/newsletter</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -91,7 +91,7 @@ Pester            5.7.1   5.7.1            False
 PSReadLine        2.4.5   2.4.5            False
 PackageManagement 1.4.8.1 1.4.8.1          False</dev:code>
         <dev:remarks>
-          <maml:para>Check the status of user-specified modules.</maml:para>
+          <maml:para>Überprüft den Status benutzerdefinierter Module.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
@@ -108,15 +108,11 @@ Microsoft.WinGet.Client              1.11.460 1.12.350         False
 Microsoft.PowerShell.WhatsNew        0.5.5    0.5.5            False
 Microsoft.PowerShell.ThreadJob       2.2.0    2.2.0            False</dev:code>
         <dev:remarks>
-          <maml:para>Check module status from a list.</maml:para>
+          <maml:para>Überprüft den Modulstatus aus einer Liste.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
     <command:relatedLinks>
-      <maml:navigationLink>
-        <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>https://jdhitsolutions.com/yourls/a14c2e</maml:uri>
-      </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Get-PSIntro</maml:linkText>
         <maml:uri></maml:uri>
@@ -129,12 +125,12 @@ Microsoft.PowerShell.ThreadJob       2.2.0    2.2.0            False</dev:code>
       <command:verb>Get</command:verb>
       <command:noun>PSIntro</command:noun>
       <maml:description>
-        <maml:para>Display a PowerShell welcome screen</maml:para>
+        <maml:para>Zeigt einen PowerShell-Begrüßungsbildschirm an</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>This command will display a PowerShell welcome or "splash" screen. The display includes a list of online resources. If you include the -ModuleStatus parameter, the output will include the status of key modules. Keeping these modules up to date will help ensure a good user experience.</maml:para>
-      <maml:para>If you include -Tutorial, you will be prompted to run a set of tutorials. The tutorials are interactive and will help the user learn about PowerShell. If the user chooses to run the tutorials, they will be run consecutively. The tutorials are written as PowerShell scripts with a combination of formatted text and live console output from the user's current PowerShell session. This ensures that output is relevant to the user's environment.</maml:para>
+      <maml:para>Dieser Befehl zeigt einen PowerShell-Begrüßungs- oder "Splash"-Bildschirm an. Die Anzeige enthält eine Liste von Online-Ressourcen. Wenn Sie den Parameter -ModuleStatus angeben, enthält die Ausgabe den Status wichtiger Module. Das Aktualisieren dieser Module trägt zu einer besseren Benutzererfahrung bei.</maml:para>
+      <maml:para>Wenn Sie -Tutorial angeben, werden Sie aufgefordert, eine Reihe von Tutorials auszuführen. Die Tutorials sind interaktiv und helfen dem Benutzer, PowerShell zu erlernen. Wenn der Benutzer sich entscheidet, die Tutorials auszuführen, werden diese nacheinander gestartet. Die Tutorials sind als PowerShell-Skripte geschrieben und enthalten eine Kombination aus formatiertem Text und Live-Konsolenausgabe aus der aktuellen PowerShell-Sitzung des Benutzers. Dadurch ist die Ausgabe relevant für die Umgebung des Benutzers.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -142,7 +138,7 @@ Microsoft.PowerShell.ThreadJob       2.2.0    2.2.0            False</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>ModuleStatus</maml:name>
           <maml:description>
-            <maml:para>Include key module status.</maml:para>
+            <maml:para>Beinhaltet den Status wichtiger Module.</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -153,7 +149,7 @@ Microsoft.PowerShell.ThreadJob       2.2.0    2.2.0            False</dev:code>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Tutorial</maml:name>
           <maml:description>
-            <maml:para>Show the tutorial prompt. If you select Yes, the tutorials will run consecutively, in order. If you select No, the command will exit without running any tutorials. You can run Start-PSTutorial to launch the tutorials at any time and in any order.</maml:para>
+            <maml:para>Zeigt die Tutorialaufforderung an. Wenn Sie Ja wählen, werden die Tutorials nacheinander ausgeführt. Wenn Sie Nein wählen, beendet der Befehl ohne Ausführung der Tutorials. Sie können Start-PSTutorial jederzeit verwenden, um die Tutorials zu starten und in beliebiger Reihenfolge auszuführen.</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -167,7 +163,7 @@ Microsoft.PowerShell.ThreadJob       2.2.0    2.2.0            False</dev:code>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>ModuleStatus</maml:name>
         <maml:description>
-          <maml:para>Include key module status.</maml:para>
+          <maml:para>Beinhaltet den Status wichtiger Module.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -179,7 +175,7 @@ Microsoft.PowerShell.ThreadJob       2.2.0    2.2.0            False</dev:code>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Tutorial</maml:name>
         <maml:description>
-          <maml:para>Show the tutorial prompt. If you select Yes, the tutorials will run consecutively, in order. If you select No, the command will exit without running any tutorials. You can run Start-PSTutorial to launch the tutorials at any time and in any order.</maml:para>
+          <maml:para>Zeigt die Tutorialaufforderung an. Wenn Sie Ja wählen, werden die Tutorials nacheinander ausgeführt. Wenn Sie Nein wählen, beendet der Befehl ohne Ausführung der Tutorials. Sie können Start-PSTutorial jederzeit verwenden, um die Tutorials zu starten und in beliebiger Reihenfolge auszuführen.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -195,7 +191,7 @@ Microsoft.PowerShell.ThreadJob       2.2.0    2.2.0            False</dev:code>
           <maml:name>None</maml:name>
         </dev:type>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>Keine</maml:para>
         </maml:description>
       </command:inputType>
     </command:inputTypes>
@@ -205,14 +201,14 @@ Microsoft.PowerShell.ThreadJob       2.2.0    2.2.0            False</dev:code>
           <maml:name>Object</maml:name>
         </dev:type>
         <maml:description>
-          <maml:para></maml:para>
+          <maml:para>Objekt</maml:para>
         </maml:description>
       </command:returnValue>
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>This command has aliases of PSIntro and PSWelcome.</maml:para>
-        <maml:para>Learn more about PowerShell: http://jdhitsolutions.com/yourls/newsletter</maml:para>
+        <maml:para>Dieser Befehl hat die Aliase PSIntro und PSWelcome.</maml:para>
+        <maml:para>Erfahren Sie mehr über PowerShell: http://jdhitsolutions.com/yourls/newsletter</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -220,9 +216,9 @@ Microsoft.PowerShell.ThreadJob       2.2.0    2.2.0            False</dev:code>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
         <dev:code>PS C:\&gt; Get-PSIntro -ModuleStatus
 
-Welcome to PowerShell!
+Willkommen bei PowerShell!
 
-      PowerShell v7.5.4
+  PowerShell v7.5.4
  PowerShell Documentation  : https://learn.microsoft.com/powershell
  PowerShell on Slack       : https//aka.ms/psslack
  PowerShell on Discord     : https://aka.ms/psdiscord
@@ -230,30 +226,30 @@ Welcome to PowerShell!
  PowerShell Gallery        : https://www.powershellgallery.com
  GitHub Discussion         : https://github.com/PowerShell/PowerShell/discussions
 
-  Use any of the links above to get started learning more about PowerShell.
-  When you can, you should run Update-Help to get the latest help files for PowerShell.
+  Verwenden Sie einen der obigen Links, um mehr über PowerShell zu erfahren.
+  Wenn möglich, sollten Sie Update-Help ausführen, um die neuesten Hilfedateien für PowerShell zu erhalten.
 
-Key module status:
+Status wichtiger Module:
 
 Name                               Online Installed UpdateNeeded
 ----                               ------ --------- ------------
 PSReadLine                          2.4.5     2.4.5    False
 Microsoft.PowerShell.PSResourceGet  1.1.1     1.1.1    False
 
-  All key modules are up to date.
+  Alle wichtigen Module sind auf dem neuesten Stand.
 
-  Run Start-PSTutorial for a list of brief PowerShell tutorials.</dev:code>
+    Führen Sie Start-PSTutorial aus, um eine Liste kurzer PowerShell-Tutorials anzuzeigen.</dev:code>
         <dev:remarks>
-          <maml:para>The output will for formatted and styled using $PSStyle. The links will be clickable in Windows Terminal or similar.</maml:para>
+          <maml:para>Die Ausgabe wird mit $PSStyle formatiert und gestylt. Die Links sind im Windows Terminal oder ähnlichen Anwendungen anklickbar.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- Example 2 --------------------------</maml:title>
         <dev:code>PS C:\&gt; Get-PSIntro -Tutorial
 
-Welcome to PowerShell!
+Willkommen bei PowerShell!
 
-      PowerShell v7.5.4
+  PowerShell v7.5.4
  PowerShell Documentation  : https://learn.microsoft.com/powershell
  PowerShell on Slack       : https//aka.ms/psslack
  PowerShell on Discord     : https://aka.ms/psdiscord
@@ -261,21 +257,18 @@ Welcome to PowerShell!
  PowerShell Gallery        : https://www.powershellgallery.com
  GitHub Discussion         : https://github.com/PowerShell/PowerShell/discussions
 
-  Use any of the links above to get started learning more about PowerShell.
-  When you can, you should run Update-Help to get the latest help files for PowerShell.
+  Verwenden Sie einen der obigen Links, um mehr über PowerShell zu erfahren.
+  Wenn möglich, sollten Sie Update-Help ausführen, um die neuesten Hilfedateien für PowerShell zu erhalten.
 
-  Would you like to run a set of short interactive tutorial on essential PowerShell fundamentals?
-  Enter Y to continue:</dev:code>
+  Möchten Sie eine Reihe kurzer interaktiver Tutorials zu den wichtigsten PowerShell-Grundlagen ausführen?
+
+  Geben Sie Y ein, um fortzufahren:</dev:code>
         <dev:remarks>
-          <maml:para>Launch the introduction with the tutorial prompt.</maml:para>
+          <maml:para>Starten Sie die Einführung mit der Tutorialaufforderung.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
     <command:relatedLinks>
-      <maml:navigationLink>
-        <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>https://jdhitsolutions.com/yourls/4d142b</maml:uri>
-      </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Start-PSTutorial</maml:linkText>
         <maml:uri></maml:uri>
@@ -288,12 +281,12 @@ Welcome to PowerShell!
       <command:verb>Start</command:verb>
       <command:noun>PSTutorial</command:noun>
       <maml:description>
-        <maml:para>Start an interactive PowerShell tutorial</maml:para>
+        <maml:para>Starten Sie ein interaktives PowerShell-Tutorial</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>This command serves as a launcher for the tutorials included in the PSIntro module. You can select a tutorial topic. If you don't specify a topic, you will get a simple menu of interactive PowerShell tutorials. The tutorial consists of a combination of text and information from your host and PowerShell environment.</maml:para>
-      <maml:para>The tutorial will be displayed in "pages" with prompts to continue. Press `Enter` to continue or 'q' to quit. Your progress will not be saved.</maml:para>
+      <maml:para>Dieser Befehl dient als Starter für die in dem PSIntro-Modul enthaltenen Tutorials. Sie können ein Tutorial-Thema auswählen. Wenn Sie kein Thema angeben, erhalten Sie ein einfaches Menü mit interaktiven PowerShell-Tutorials. Das Tutorial besteht aus einer Kombination von Texten und Informationen aus Ihrer Host- und PowerShell-Umgebung.</maml:para>
+      <maml:para>Das Tutorial wird in "Seiten" angezeigt, mit Aufforderungen zum Fortfahren. Drücken Sie `Enter`, um fortzufahren, oder `q`, um zu beenden. Ihr Fortschritt wird nicht gespeichert.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -301,7 +294,7 @@ Welcome to PowerShell!
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
           <maml:name>Topic</maml:name>
           <maml:description>
-            <maml:para>Specify a tutorial topic otherwise you will be presented with a menu of topics. Valid topics are:</maml:para>
+            <maml:para>Geben Sie ein Tutorial-Thema an; andernfalls wird Ihnen ein Menü mit verfügbaren Themen angezeigt. Gültige Themen sind:</maml:para>
             <maml:para>- PowerShell Essentials</maml:para>
             <maml:para>- Get-Command</maml:para>
             <maml:para>- Get-Help</maml:para>
@@ -320,7 +313,7 @@ Welcome to PowerShell!
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
         <maml:name>Topic</maml:name>
         <maml:description>
-          <maml:para>Specify a tutorial topic otherwise you will be presented with a menu of topics. Valid topics are:</maml:para>
+          <maml:para>Geben Sie ein Tutorial-Thema an; andernfalls wird Ihnen ein Menü mit verfügbaren Themen angezeigt. Gültige Themen sind:</maml:para>
           <maml:para>- PowerShell Essentials</maml:para>
           <maml:para>- Get-Command</maml:para>
           <maml:para>- Get-Help</maml:para>
@@ -356,7 +349,7 @@ Welcome to PowerShell!
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Learn more about PowerShell: http://jdhitsolutions.com/yourls/newsletter</maml:para>
+        <maml:para>Erfahren Sie mehr über PowerShell: http://jdhitsolutions.com/yourls/newsletter</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -364,32 +357,28 @@ Welcome to PowerShell!
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
         <dev:code>PS C:\&gt; Start-PSTutorial
 
-    PowerShell Tutorial Menu
+    PowerShell-Tutorial-Menü
 
-    1 - PowerShell Essentials
-    2 - Get-Command
-    3 - Get-Help
-    4 - Get-Member
-    5 - Quit
+        1 - PowerShell-Grundlagen
+        2 - Get-Command
+        3 - Get-Help
+        4 - Get-Member
+        5 - Beenden
 
-    Select a menu option [1-5]:</dev:code>
+        Wählen Sie eine Menüoption [1-5]:</dev:code>
         <dev:remarks>
-          <maml:para>The menu title will be formatted using $PSStyle.</maml:para>
+          <maml:para>Der Menütitel wird mit `$PSStyle` formatiert.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- Example 2 --------------------------</maml:title>
         <dev:code>PS C:\&gt; Start-PSTutorial -Topic 'Get-Command'</dev:code>
         <dev:remarks>
-          <maml:para>Launch the Get-Command tutorial.</maml:para>
+          <maml:para>Startet das Get-Command-Tutorial.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
     <command:relatedLinks>
-      <maml:navigationLink>
-        <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>https://jdhitsolutions.com/yourls/63bfe0</maml:uri>
-      </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Get-PSIntro</maml:linkText>
         <maml:uri></maml:uri>

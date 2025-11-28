@@ -114,8 +114,8 @@ des commandes que vous utiliserez prennent en charge cette fonctionnalité d'aid
 sous RELATED LINKS:
 
 RELATED LINKS
-    {2}Online Version: https://learn.microsoft.com/powershell/module/microsoft.powershell.management/
-    get-process?view=powershell-7.3&WT.mc_id=ps-gethelp{1}
+    {2}Online Version:
+    https://learn.microsoft.com/powershell/module/microsoft.powershell.management/get-process?view=powershell-7.5&WT.mc_id=ps-gethelp{1}
     Debug-Process
     Get-Process
     Start-Process
