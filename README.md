@@ -127,7 +127,9 @@ You can quit a tutorial at any time by entering `q` at the prompt. Note that you
 
 ## Localization
 
-Beginning with v0.8.0 message strings are localized for en-US and fr-FR cultures. Support for de-DE was added in v0.10.0. Tutorials have been translated from English using Claude Sonnet 3.7. All other localization translations were done in VS Code using GPT-5 mini. I welcome pull requests with human-reviewed translations.
+Beginning with v0.8.0 message strings are localized for `en-US` and `fr-FR` cultures. Support for `de-DE` was added in v0.10.0. Tutorials have been translated from English using Claude Sonnet 3.7. All other localization translations were done in VS Code using GPT-5 mini.
+
+> __*I welcome pull requests with human-reviewed translations.*__
 
 If you add a new localization, you should include a culture-specific folder that is properly cased. Inside the folder should be a localized version of `PSIntro.psd1`. There should also be a `tutorials` folder with localized tutorial scripts. Finally, there should be a folder for localized Markdown help files. __Do not localize any of the Markdown headings such as `## Synopsis`__.
 
