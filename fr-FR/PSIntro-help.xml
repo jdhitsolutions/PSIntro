@@ -46,7 +46,7 @@
     <command:inputTypes>
       <command:inputType>
         <dev:type>
-          <maml:name>None</maml:name>
+          <maml:name>String</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
@@ -56,7 +56,7 @@
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>System.Object</maml:name>
+          <maml:name>ModuleStatusInfo</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
@@ -114,8 +114,81 @@ Microsoft.PowerShell.ThreadJob       2.2.0    2.2.0            False</dev:code>
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://jdhitsolutions.com/yourls/3022e2</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
         <maml:linkText>Get-PSIntro</maml:linkText>
         <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-ProfileStatus</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>ProfileStatus</command:noun>
+      <maml:description>
+        <maml:para>Obtenir l'état des scripts de profil PowerShell pour l'hôte actuel.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Exécutez cette commande pour obtenir l'état des scripts de profil PowerShell pour l'hôte actuel. La sortie inclut le nom du profil, le chemin et l'indication si le script de profil existe. Les chemins des scripts de profil PowerShell sont codés en dur en fonction du contexte de l'hôte et de l'utilisateur actuel. Les fichiers de script n'existent pas par défaut. Vous devez les créer si vous souhaitez personnaliser votre environnement PowerShell. Notez que vous devrez peut-être également créer des dossiers supplémentaires.</maml:para>
+      <maml:para>La variable intégrée $profile pointe par défaut vers le script de profil pour l'utilisateur actuel dans l'hôte PowerShell actuel. Consultez le sujet d'aide about_Profiles pour en savoir plus.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-ProfileStatus</maml:name>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters />
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>ProfileStatusInfo</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>En savoir plus sur PowerShell : http://jdhitsolutions.com/yourls/newsletter</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Get-ProfileStatus
+
+   Computername: CADENZA [ConsoleHost]
+
+ProfileName            Path                                                                Exists
+-----------            ----                                                                ------
+AllUsersAllHosts       C:\Program Files\PowerShell\7\profile.ps1                           True
+AllUsersCurrentHost    C:\Program Files\PowerShell\7\Microsoft.PowerShell_profile.ps1      False
+CurrentUserAllHosts    C:\Users\jeff\Documents\PowerShell\profile.ps1                      True
+CurrentUserCurrentHost C:\Users\jeff\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 True</dev:code>
+        <dev:remarks>
+          <maml:para>Les profils qui n'existent pas seront mis en évidence en rouge.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>About_Profiles</maml:linkText>
+        <maml:uri>https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_profiles</maml:uri>
       </maml:navigationLink>
     </command:relatedLinks>
   </command:command>
@@ -269,6 +342,10 @@ Bienvenue dans PowerShell !
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://jdhitsolutions.com/yourls/e0e67a</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
         <maml:linkText>Start-PSTutorial</maml:linkText>
         <maml:uri></maml:uri>
       </maml:navigationLink>
@@ -378,6 +455,10 @@ Bienvenue dans PowerShell !
       </command:example>
     </command:examples>
     <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://jdhitsolutions.com/yourls/2d9a76</maml:uri>
+      </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Get-PSIntro</maml:linkText>
         <maml:uri></maml:uri>

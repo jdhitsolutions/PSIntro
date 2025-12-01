@@ -1,0 +1,70 @@
+<!--
+Format type data generated 11/29/2025 09:49:07 by Cadenza\jeff
+
+This file was created using the New-PSFormatXML command that is part
+of the PSScriptTools module.
+
+https://github.com/jdhitsolutions/PSScriptTools
+-->
+<Configuration>
+  <ViewDefinitions>
+    <View>
+      <!--Created 11/29/2025 09:49:07 by Cadenza\jeff-->
+      <Name>default</Name>
+      <ViewSelectedBy>
+        <TypeName>ModuleStatusInfo</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <!--Delete the AutoSize node if you want to use the defined widths.-->
+        <AutoSize />
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+            <Width>37</Width>
+            <Alignment>left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Online</Label>
+            <Width>9</Width>
+            <Alignment>left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Installed</Label>
+            <Width>12</Width>
+            <Alignment>left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UpdateNeeded</Label>
+            <Width>15</Width>
+            <Alignment>left</Alignment>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Online</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Installed</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>
+                  if ($_.UpdateNeeded) {
+                    "{0}{1}{2}" -f (Get-PSReadLineOption).ErrorColor,$_.UpdateNeeded,$PSStyle.Reset
+                  }
+                  else {
+                    $_.UpdateNeeded
+                  }
+                  </ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>

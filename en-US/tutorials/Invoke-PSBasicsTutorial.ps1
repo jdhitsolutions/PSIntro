@@ -178,6 +178,7 @@ from the console.
 
 "@
 #endregion
+
 #region Run the tutorial
 Clear-Host
 

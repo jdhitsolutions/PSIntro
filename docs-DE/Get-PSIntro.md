@@ -1,7 +1,7 @@
 ---
 external help file: PSIntro-help.xml
 Module Name: PSIntro
-online version:
+online version: https://jdhitsolutions.com/yourls/3d2a4a
 schema: 2.0.0
 ---
 

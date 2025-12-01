@@ -73,7 +73,7 @@ $head
         Else {
             &$tutorials['PowerShell Essentials'] -Full
         }
-    }
+    } #if tutorial prompt
     else {
         #display a message about running Start-PSTutorial
         if ($ModuleStatus) {

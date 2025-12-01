@@ -1,9 +1,24 @@
 # Changelog for PSIntro
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+The format of this file is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.0.0] - 2025-12-01
+
+### Added
+
+- Added function `Get-ProfileStatus`
+- Added format file for `ModuleStatusInfo` objects.
+- Added online links for localized help.
+
+### Changed
+
+- Revised module description in the module manifest.
+- Updated `README`.
+- Modified `Start-PSTutorial` to use the formatted box for the menu and stylized the prompt.
+- Added a defined typename, `ModuleStatusInfo` to `Get-ModuleStatus` output.
 
 ## [0.10.0] - 2025-11-28
 
@@ -102,7 +117,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release to GitHub
 
-[Unreleased]: https://github.com/jdhitsolutions/PSIntro/compare/v0.10.0..HEAD
+[Unreleased]: https://github.com/jdhitsolutions/PSIntro/compare/v1.0.0..HEAD
+[1.0.0]: https://github.com/jdhitsolutions/PSIntro/compare/v0.10.0..v1.0.0
 [0.10.0]: https://github.com/jdhitsolutions/PSIntro/compare/v0.9.0..v0.10.0
 [0.9.0]: https://github.com/jdhitsolutions/PSIntro/compare/v0.8.0..v0.9.0
 [0.8.0]: https://github.com/jdhitsolutions/PSIntro/compare/v0.7.0..v0.8.0

@@ -1,7 +1,7 @@
 ---
 external help file: PSIntro-help.xml
 Module Name: PSIntro
-online version:
+online version: https://jdhitsolutions.com/yourls/3022e2
 schema: 2.0.0
 ---
 
@@ -90,11 +90,11 @@ Cette cmdlet prend en charge les paramètres communs : -Debug, -ErrorAction, -Er
 
 ## INPUTS
 
-### None
+### String
 
 ## OUTPUTS
 
-### System.Object
+### ModuleStatusInfo
 
 ## NOTES
 

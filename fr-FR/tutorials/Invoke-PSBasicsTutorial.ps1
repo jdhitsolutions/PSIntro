@@ -180,6 +180,7 @@ des commandes PowerShell depuis la console.
 
 "@
 #endregion
+
 #region Run the tutorial
 Clear-Host
 

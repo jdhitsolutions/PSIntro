@@ -1,0 +1,82 @@
+<!--
+Format type data generated 11/29/2025 11:33:44 by Cadenza\jeff
+
+This file was created using the New-PSFormatXML command that is part
+of the PSScriptTools module.
+
+https://github.com/jdhitsolutions/PSScriptTools
+-->
+<Configuration>
+  <ViewDefinitions>
+    <View>
+      <!--Created 11/29/2025 11:33:44 by Cadenza\jeff-->
+      <Name>default</Name>
+      <ViewSelectedBy>
+        <TypeName>ProfileStatusInfo</TypeName>
+      </ViewSelectedBy>
+      <GroupBy>
+        <ScriptBlock>
+        "{0} [{1}]" -f [Environment]::MachineName,$Host.Name
+        </ScriptBlock>
+        <Label>Computername</Label>
+      </GroupBy>
+      <TableControl>
+        <!--Delete the AutoSize node if you want to use the defined widths.-->
+        <AutoSize />
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ProfileName</Label>
+            <Width>22</Width>
+            <Alignment>left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Path</Label>
+            <Width>65</Width>
+            <Alignment>left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Exists</Label>
+            <Width>9</Width>
+            <Alignment>left</Alignment>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <ScriptBlock>
+                  If (-Not $_.Exists) {
+                    "{0}{1}{2}" -f (Get-PSReadlineOption).ErrorColor,$_.ProfileName,$PSStyle.Reset
+                  }
+                  else {
+                    $_.ProfileName
+                  }
+                  </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>
+                  If (-Not $_.Exists) {
+                    "{0}{1}{2}" -f (Get-PSReadlineOption).ErrorColor,$_.Path,$PSStyle.Reset
+                  }
+                  else {
+                    $_.ProfileName
+                  }
+                  </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>
+                  if ($_.Exists) {
+                    $_.Exists
+                  }
+                  else {
+                    "{0}{1}{2}" -f (Get-PSReadlineOption).ErrorColor,$_.Exists,$PSStyle.Reset
+                  }
+                  </ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>

@@ -22,4 +22,5 @@ addingModule = Modul {0} zur Liste hinzufügen
 validating = Validierung von {0} Modulen
 ending = Beenden des Modulbefehls {0}
 quit = Beenden
+getProfile = Abrufen des Status des PowerShell-Profilskripts für den aktuellen Host.
 "@

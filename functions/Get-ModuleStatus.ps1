@@ -1,5 +1,6 @@
 function Get-ModuleStatus {
     [cmdletBinding()]
+    [OutputType('ModuleStatusInfo')]
     param(
         [Parameter(
             Position = 0,
@@ -16,7 +17,6 @@ function Get-ModuleStatus {
         Write-Verbose "[$((Get-Date).TimeOfDay) BEGIN  ] $($strings.runningPS -f $($PSVersionTable.PSVersion))"
 
         $moduleList = [System.Collections.Generic.List[string]]::New()
-
     } #begin
     process {
         Foreach ($m in $Module) {
@@ -35,6 +35,7 @@ function Get-ModuleStatus {
             Select-Object -Last 1 -ExpandProperty Version
 
             [PSCustomObject]@{
+                PSTypeName   = 'ModuleStatusInfo'
                 Name         = $item.Name
                 Online       = $item.Version
                 Installed    = $local

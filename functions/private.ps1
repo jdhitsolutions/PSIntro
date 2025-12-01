@@ -1,7 +1,7 @@
 #these are private helper functions
 
 function pause {
-    $r=(Read-Host "`e[3;37m$($strings.continue)$($PSStyle.Reset)")
+    $r = (Read-Host "`e[3;37m$($strings.continue)$($PSStyle.Reset)")
     if ($r -eq 'q') {
         $msg = $strings.tutorialCommand -f $cmdStyle,$reset
         Write-Host "`n$msg"
@@ -23,7 +23,7 @@ Function Format-BorderBox {
             ValueFromPipeline,
             HelpMessage = 'Enter the text to be displayed in the box.'
         )]
-        [ValidateNotNullOrEmpty()]
+        #blank lines should be allowed
         [string[]]$Text,
         [Parameter(HelpMessage = 'Enter an optional title')]
         [string]$Title,

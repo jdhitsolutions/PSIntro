@@ -22,4 +22,5 @@ addingModule = Adding module {0} to the list
 validating = Validating {0} modules
 ending = Ending module command {0}
 quit = Quit
+getProfile = Getting PowerShell profile script status for the current host.
 "@
