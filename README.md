@@ -1,6 +1,6 @@
 # PSIntro
 
-[![PSGallery Version](https://img.shields.io/powershellgallery/v/PSintro.png?style=for-the-badge&label=PowerShell%20Gallery)](https://www.powershellgallery.com/packages/PSintro/) [![PSGallery Downloads](https://img.shields.io/powershellgallery/dt/PSintro.png?style=for-the-badge&label=Downloads)](https://www.powershellgallery.com/packages/PSintro/)
+[![PSGallery Version](https://img.shields.io/powershellgallery/v/PSIntro.png?style=for-the-badge&label=PowerShell%20Gallery)](https://www.powershellgallery.com/packages/PSIntro/) [![PSGallery Downloads](https://img.shields.io/powershellgallery/dt/PSIntro.png?style=for-the-badge&label=Downloads)](https://www.powershellgallery.com/packages/PSIntro/)
 
 ![](images/PowerShell-transparent-thumb.jpg)
 
@@ -154,3 +154,4 @@ This is a list of items under consideration for future development of this modul
 - Create a tutorial authoring framework
 
 Please use the [Discussions](https://github.com/jdhitsolutions/PSIntro/discussions) section of the project's GitHub repository to share your thoughts, ideas, and suggestions.
+
