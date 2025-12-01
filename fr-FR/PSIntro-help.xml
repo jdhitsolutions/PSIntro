@@ -187,6 +187,10 @@ CurrentUserCurrentHost C:\Users\jeff\Documents\PowerShell\Microsoft.PowerShell_p
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://jdhitsolutions.com/yourls/566292</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
         <maml:linkText>About_Profiles</maml:linkText>
         <maml:uri>https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_profiles</maml:uri>
       </maml:navigationLink>
