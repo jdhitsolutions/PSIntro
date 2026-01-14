@@ -54,7 +54,7 @@ https://github.com/jdhitsolutions/PSScriptTools
               <TableColumnItem>
                 <ScriptBlock>
                   if ($_.UpdateNeeded) {
-                    "{0}{1}{2}" -f (Get-PSReadLineOption).ErrorColor,$_.UpdateNeeded,$PSStyle.Reset
+                    "{0}{1}{2}" -f (Get-PSReadLineOption).ErrorColor,$_.UpdateNeeded,"$([char]27)[0m"
                   }
                   else {
                     $_.UpdateNeeded

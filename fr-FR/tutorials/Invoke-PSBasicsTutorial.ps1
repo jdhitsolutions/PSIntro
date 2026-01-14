@@ -1,11 +1,14 @@
-# An interactive tutorial for PowerShell basics
+﻿# An interactive tutorial for PowerShell basics
 
 Param(
     [switch]$Full,
     [switch]$Menu
 )
 
-if ($isWindows) {
+#region setup
+$script:tutorialParam = $PSBoundParameters
+
+if ($isWindows -OR ($PSEdition -eq 'Desktop')) {
     $root = "\"
 }
 else {
@@ -13,6 +16,15 @@ else {
 }
 
 $title = "$($titleStyle)Fondamentaux Essentiels de PowerShell$($reset)"
+if ($IsCoreCLR) {
+    $psh = 'pwsh'
+    $nVar = 'pw*'
+}
+else {
+    $psh = 'powershell'
+    $nVar = 'pow*'
+}
+#endregion
 
 #region content
 $intro = @"
@@ -37,14 +49,14 @@ PowerShell est basé sur le framework .NET et adopte une approche orientée {3}o
 quoi vous travaillez dans PowerShell est un objet, et non du texte. Cependant, {4}il n'est pas
 nécessaire{1} d'être développeur .NET pour utiliser PowerShell.
 
-"@ -f $highLight3, $reset,$highLight,$highLight2,$PSStyle.Underline
+"@ -f $highLight3, $reset,$highLight,$highLight2,$underline
 
 $P2 = @"
 Les commandes PowerShell sont appelées {3}cmdlets{1}. Une cmdlet est une commande légère utilisée pour
 effectuer une tâche spécifique. Les commandes PowerShell suivent une convention de nommage verbe-nom, ce qui
 les rend faciles à trouver et à utiliser. Ce que fait la commande {0}Get-Process{1} devrait être clair.
 
-$prompt {0}Get-Process{1} {2}pwsh{1}
+$prompt {0}Get-Process{1} {2}$psh{1}
 "@ -f $cmdStyle, $reset,$defaultTokenStyle,$highLight
 
 $P3 = @"
@@ -119,10 +131,11 @@ $P10 = @"
 {0}Variables{1}
 
 Comme de nombreux langages de script et de shell, PowerShell comprend les variables. Une variable contient
-une valeur, telle qu'une chaîne de texte ou un nombre. Utilisez le caractère {2}`${1} pour définir une variable.
+une valeur, telle qu'une chaîne de texte ou un nombre. Utilisez le caractère {2}`${1} pour définir une
+variable.
 
 $prompt {3}`$i{1} = {4}123{1}
-$prompt {3}`$n{1} = {5}"pw*"{1}
+$prompt {3}`$n{1} = {5}"$nvar"{1}
 
 "@ -f $highLight3, $reset,$highLight,$varStyle,$numberStyle,$stringStyle
 
@@ -151,9 +164,9 @@ $prompt {0}`$files{1} | {2}Group-Object{1} {3}-property{1} {4}Extension{1} | {2}
 "@ -f $varStyle,$reset,$cmdStyle,$paramStyle,$defaultTokenStyle
 
 $P15 = @"
-Notez que les objets peuvent changer dans le pipeline en fonction de la commande. La variable {2}`$files{1} contient
-des objets de fichier. La commande {0}Group-Object{1} crée un nouveau type d'objet avec différentes propriétés. Ces
-objets sont ensuite transmis à la commande {0}Sort-Object{1}.
+Notez que les objets peuvent changer dans le pipeline en fonction de la commande. La variable {2}`$files{1}
+contient des objets de fichier. La commande {0}Group-Object{1} crée un nouveau type d'objet avec
+différentes propriétés. Ces objets sont ensuite transmis à la commande {0}Sort-Object{1}.
 
 Pouvez-vous deviner quelle commande vous exécuteriez pour obtenir toutes les variables PowerShell?
 
@@ -175,81 +188,129 @@ $prompt {0}`$PSVersionTable{1}
 
 $P18 = @"
 
-Une fois que vous aurez terminé les autres tutoriels, vous devriez être en mesure de commencer à exécuter
-des commandes PowerShell depuis la console.
+Une fois que vous aurez terminé les autres tutoriels, vous devriez être en mesure de commencer
+à exécuter des commandes PowerShell depuis la console.
 
 "@
 #endregion
 
 #region Run the tutorial
-Clear-Host
+$pages = @(
+    {
+        Clear-Host
+        $title
+        $Intro
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        $P1
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        $P2
+        Get-Process $psh | Out-Host
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        $P3
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        Clear-Host
+        $P4
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        #I am fudging the display
+        "$e[2A"
+        (dir $root | Select-Object -First 10 ) ; "...`n" | Out-Host
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        Clear-Host
+        $P5
+        "$e[2A"
+        (Get-ChildItem $root | Select-Object -First 10 | Out-Host) ; "$e[1A...`n" #| Out-Default
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        Clear-Host
+        $P6
+        dir $home -Directory -Hidden | Select-Object -First 5  ; "...`n" | Out-Host
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        $P7
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        Clear-Host
+        $P8
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        "$e[2A"
+        Get-Process | Sort-Object WorkingSet -Descending | Select-Object -First 5 | Out-Host
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        $P9
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        Clear-Host
+        $P10
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        $i = 123
+        $n = $nVar #"pw*"
+        $P11
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        $files = Get-ChildItem -Path $HOME -File | Sort-Object -Property LastWriteTime | Select-Object -First 5
+        $P12
+        $i * 2 | Out-Host
+    },
+    {
+        $P13
+        Get-Process $n | Out-Host
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        Clear-Host
+        $P14
+        $files | Group-Object -Property Extension | Sort-Object Count -Descending | Out-Host
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        $P15
+        $script:pg++ ; Pause $script:pg $pgCount
+        (Get-Variable | Select-Object -First 10 | Out-Host) ; "$e[1A...`n"
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        Clear-Host
+        $P17
+        $PSEdition | Out-Host
+        $P17a
+        $PSVersionTable | Out-Host
+        $P18
+        $script:pg++ ; Pause $script:pg $pgCount
+    }
+)
 
-$title
-$Intro
-pause
-$P1
-pause
-$P2
-Get-Process pwsh | Out-Host
-pause
-$P3
-pause
-clear-host
-$P4
-Pause
-#I am fudging the display
-"`e[2A"
-(dir $root | Select-Object -first 10 ) && "...`n" | Out-Host
-pause
-Clear-Host
-$P5
-"`e[2A"
-(Get-ChildItem $root | Select-Object -first 10 | Out-Host) && "`e[1A...`n" #| Out-Default
-Pause
-Clear-Host
-$P6
-dir $home -Directory -Hidden | Select-Object -first 5  && "...`n"  | Out-Host
-pause
-$P7
-pause
-Clear-Host
-$P8
-pause
-"`e[2A"
-Get-Process| Sort-Object WorkingSet -Descending | Select-Object -first 5 | Out-Host
-Pause
-$P9
-pause
-Clear-Host
-$P10
-pause
-$i = 123
-$n = "pw*"
-$P11
-pause
-$files =  Get-ChildItem -Path $HOME -file | Sort-Object -Property LastWriteTime | Select-Object -first 5
-$P12
-$i*2 | Out-Host
-$P13
-Get-Process $n | Out-Host
-Pause
-Clear-Host
-$P14
-$files | Group-Object -property Extension | Sort-Object Count -Descending | Out-Host
-Pause
-
-$P15
-pause
-$P16
-(Get-Variable | Select-Object -first 10 | Out-Host) && "`e[1A...`n"
-Pause
-Clear-Host
-$P17
-$PSEdition | Out-Host
-$P17a
-$PSVersionTable | Out-Host
-$P18
-pause
+#keep a navigation page counter
+$pgCount = $pages.count
+<#
+There is an overlap in functionality between $i and $pg but they are
+separate counters because there may be times I need to display a "page"
+of information into two pages and want to maintain a page number.
+#>
+for ($script:i = 0; $script:i -lt $pages.count; $script:i++) {
+    Invoke-Command -ScriptBlock $pages[$script:i]
+}
 #endregion
 
 if ($full) {

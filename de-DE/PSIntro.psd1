@@ -1,7 +1,7 @@
 #localized string data for verbose messaging, errors, and warnings.
 
 ConvertFrom-StringData @"
-continue = Drücken Sie die Eingabetaste, um fortzufahren (Q zum Beenden)
+continue = Drücken Sie eine Taste, um fortzufahren (P für die vorherige Seite oder Q zum Beenden)
 key = Status der wichtigsten Module:
 menuSelect = Wählen Sie eine Menüoption
 menuTitle = PowerShell Tutorial Menü
@@ -23,4 +23,14 @@ validating = Validierung von {0} Modulen
 ending = Beenden des Modulbefehls {0}
 quit = Beenden
 getProfile = Abrufen des Status des PowerShell-Profilskripts für den aktuellen Host.
+addProfileComment = Get-PSIntro-Eintrag hinzugefügt
+noProfileFound = Das Profilskript konnte nicht gefunden werden.
+profilePrompt = Möchten Sie es erstellen? Geben Sie Y ein, um die Datei zu erstellen, eine andere Taste zum Abbrechen
+cmdFound = Es sieht so aus, als ob ein Befehl für Get-PSIntro bereits im Profilskript {0} vorhanden ist.
+updatePath = Aktualisiere PowerShell-Profilskript {0}
+createPath = Erstelle PowerShell-Profilskript {0}
+testPath = Teste PowerShell-Profilskript {0}
+newProfile = Erstellen des PowerShell-Profilskripts für {0}
+existingProfile = Ein vorhandenes PowerShell-Profilskript für {0} wurde unter {1} gefunden.
+profileTutorialTitle = Erste Schritte mit PowerShell-Profilskripten
 "@

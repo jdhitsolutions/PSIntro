@@ -1,7 +1,7 @@
 #localized fr-FR string data for verbose messaging, errors, and warnings.
 
 ConvertFrom-StringData @'
-continue = Appuyez sur Entrée pour continuer (Q pour quitter)
+continue = Appuyez sur n'importe quelle touche pour continuer (P pour la page précédente ou Q pour quitter)
 key = État du module clé:
 menuSelect = Sélectionnez une option de menu
 menuTitle = Menu du didacticiel PowerShell
@@ -23,4 +23,14 @@ validating = Validation de {0} modules
 ending = Fin de la commande du module {0}
 quit = Quitter
 getProfile = Obtention de l'état du script de profil PowerShell pour l'hôte actuel.
+addProfileComment = Entrée Get-PSIntro ajoutée
+noProfileFound = Le script de profil est introuvable.
+profilePrompt = Voulez-vous le créer? Entrez Y pour créer le fichier, une autre touche pour annuler
+cmdFound = Il semble qu'une commande pour Get-PSIntro se trouve déjà dans le script de profil {0}.
+updatePath = Mise à jour du script de profil PowerShell {0}
+createPath = Création du script de profil PowerShell {0}
+testPath = Test du script de profil PowerShell {0}
+newProfile = Création du script de profil PowerShell pour {0}
+existingProfile = Un script de profil PowerShell existant pour {0} a été trouvé à {1}.
+profileTutorialTitle = Introduction aux scripts de profil PowerShell
 '@

@@ -1,12 +1,35 @@
-#an interactive tutorial for Get-Help
+﻿#an interactive tutorial for Get-Help
 Param(
     [switch]$Full,
     [switch]$Menu
 )
 
-$cmd = 'Get-Help'
+#region setup
+$script:tutorialParam = $PSBoundParameters
 
+$cmd = 'Get-Help'
 $title = "$($titleStyle)Démarrer avec $cmd$reset"
+
+#get version specific help
+$gpsHelp = Get-Help -Name Get-Process
+$onlineVer = $gpsHelp.relatedLinks.navigationLink[0].uri
+$exampleCode = if ($gpsHelp.examples.example[0].code) {
+    $gpsHelp.examples.example[0].code.insert(0, '    ')
+}else {
+    "$($gpsHelp.examples.example[0].introduction.Text[0].split("`n").foreach({$_.insert(0,'    ')})| Out-String)"
+}
+if ($IsCoreCLR) {
+    $psh = 'pwsh'
+    $exampleRemarks = $gpsHelp.examples.example[0].introduction.text | Select-Object -Skip 2
+    $syntaxHighlight = 'Get-Process [{2}[{4}-Name{2}]{4} <System.String[]>] [-FileVersionInfo] [-Module]
+    [<CommonParameters>]'
+} else {
+    $psh = 'powershell'
+    $exampleRemarks = $gpsHelp.examples.example[0].remarks[0].text
+    $syntaxHighlight = 'Get-Process [{2}[{4}-Name{2}]{4} <System.String[]>] [-ComputerName <System.String[]>] [-FileVersionInfo] [-Module]
+    [<CommonParameters>]'
+}
+#endregion
 
 #region content
 $Intro = @"
@@ -48,7 +71,7 @@ $P3 = @"
 Un bref {0}synopsis{1} ou une explication sur ce que fait la commande.
 
 SYNOPSIS
-    Obtient les processus qui sont en cours d'exécution sur l'ordinateur local.
+    $($gpsHelp.Synopsis)
 
 "@ -f $highLight,$reset
 
@@ -56,18 +79,7 @@ $P4 = @"
 La {0}syntaxe{1} de la commande, qui est la même chose que vous pouvez voir avec {2}Get-Command{1}.
 
 SYNTAX
-    Get-Process [[-Name] <System.String[]>] [-FileVersionInfo] [-Module] [<CommonParameters>]
-
-    Get-Process [-FileVersionInfo] -Id <System.Int32[]> [-Module] [<CommonParameters>]
-
-    Get-Process [-FileVersionInfo] -InputObject <System.Diagnostics.Process[]> [-Module]
-    [<CommonParameters>]
-
-    Get-Process -Id <System.Int32[]> -IncludeUserName [<CommonParameters>]
-
-    Get-Process [[-Name] <System.String[]>] -IncludeUserName [<CommonParameters>]
-
-    Get-Process -IncludeUserName -InputObject <System.Diagnostics.Process[]> [<CommonParameters>]
+    $(($gpsHelp.syntax | Out-String).TrimEnd() -replace 'Get','   Get')
 
 "@ -f $highLight,$reset,$cmdStyle
 
@@ -75,7 +87,7 @@ $P5 = @"
 Et une {0}description{1} plus détaillée.
 
 DESCRIPTION
-    La cmdlet `Get-Process` obtient les processus sur un ordinateur local.
+    $(($gpsHelp.description[0] | Out-String).Trim())
     ...
 
 "@ -f $highLight,$reset
@@ -91,18 +103,15 @@ NAME
     Get-Process
 
 SYNOPSIS
-    Obtient les processus qui sont en cours d'exécution sur l'ordinateur local.
+     $($gpsHelp.Synopsis)
 
-    {2}Exemple 1: Obtenir une liste de tous les processus actifs sur l'ordinateur local{1}
+    {2}$($gpsHelp.examples.example[0].title){1}
 
-    Get-Process
+$(($exampleCode).TrimEnd())
 
-    Cette commande obtient une liste de tous les processus actifs exécutés sur l'ordinateur local.
-    Pour une définition de chaque colonne, consultez la section Notes (#notes).
+    $exampleRemarks
 
-    {2}Exemple 2: Obtenir toutes les données disponibles sur un ou plusieurs processus{1}
-
-    Get-Process winword, explorer | Format-List *
+    ....
 
 "@ -f $cmdStyle,$reset,$highLight2,$cmdStyle,$defaultTokenStyle,$paramStyle
 
@@ -113,14 +122,10 @@ un lien en ligne, il s'ouvrira dans votre navigateur par défaut. Ce n'est pas u
 des commandes que vous utiliserez prennent en charge cette fonctionnalité d'aide. Le lien en ligne sera affiché
 sous RELATED LINKS:
 
+
 RELATED LINKS
-    {2}Online Version:
-    https://learn.microsoft.com/powershell/module/microsoft.powershell.management/get-process?view=powershell-7.5&WT.mc_id=ps-gethelp{1}
-    Debug-Process
-    Get-Process
-    Start-Process
-    Stop-Process
-    Wait-Process
+    {2}Online Version: $onlineVer{1}
+$(($gpsHelp.relatedLinks.navigationLink[1..5]).linkText.split("`n").Foreach({$_.insert(0,'    ')})| Out-String)
 
 "@ -f $highLight,$reset,$highLight2
 
@@ -129,9 +134,8 @@ $P8 = @"
 Il est très important que vous compreniez comment interpréter la syntaxe de l'aide.
 
 SYNTAX
-    Get-Process [[-Name] <System.String[]>] [-FileVersionInfo] [-Module] [<CommonParameters>]
+    $(((Get-Command Get-Process -Syntax).split("`n") | Select-Object -Skip 1 -First 3 | Foreach-Object {"`n     $($_)"}) )
 
-    Get-Process [-FileVersionInfo] -Id <System.Int32[]> [-Module] [<CommonParameters>]
     ...
 
 Chaque combinaison de paramètres est appelée un {0}jeu de paramètres{1}. Vous ne pouvez pas mélanger les
@@ -144,10 +148,7 @@ Tout ce que vous voyez entre [ ] est considéré comme {0}optionnel{2}. Cela sig
 le paramètre {4}Id{2}, vous devez le spécifier car il n'est pas entre [ ].
 
 SYNTAX
-    Get-Process [[-Name] <System.String[]>] [-FileVersionInfo] [-Module] [<CommonParameters>]
-
-    Get-Process [-FileVersionInfo] {1}-Id{2} <System.Int32[]> [-Module] [<CommonParameters>]
-    ...
+    $(($gpsHelp.syntax | Out-String).Trim())
 
 $prompt {3}Get-Process{2} {4}-Id{2} {5}`$PID{2}
 "@ -f $highLight,$highLight3,$reset,$cmdStyle,$paramStyle,$varStyle
@@ -163,8 +164,7 @@ En examinant à nouveau la syntaxe, vous pouvez utiliser le paramètre {1}Name{4
 le nom du paramètre est entre [ ].
 
 SYNTAX
-    Get-Process [{2}[{4}-Name{2}]{4} <System.String[]>] [-FileVersionInfo] [-Module]
-    [<CommonParameters>]
+    $syntaxHighlight
 
 La syntaxe vous indique que l'ensemble du paramètre {1}Name{4} est optionnel, et si vous voulez l'utiliser,
 vous n'avez même pas besoin d'utiliser le nom du paramètre. C'est ce qu'on appelle un paramètre {0}positionnel{4}.
@@ -173,7 +173,7 @@ Le texte entre {2}< >{4} indique quel {0}type{4} de valeur de paramètre utilise
 du texte. Lorsque vous voyez {2}[]{4} comme partie du type, cela indique que le paramètre acceptera plusieurs valeurs
 séparées par des virgules.
 
-$prompt {3}Get-Process{4} {5}pwsh,sys*{4}
+$prompt {3}Get-Process{4} {5}$psh,sys*{4}
 "@ -f $highLight,$highLight2,$highlight3,$cmdStyle,$reset,$defaultTokenStyle
 
 $P11 = @"
@@ -187,10 +187,7 @@ $P12 = @"
 Voyez-vous comment ces paramètres sont définis comme positionnels ou nommés? Le détail indique également
 s'il s'agit d'un paramètre obligatoire. Comparez ces informations à la façon dont elles sont affichées dans l'aide.
 
-    Get-Process [[-Name] <System.String[]>] [-FileVersionInfo] [-Module] [<CommonParameters>]
-    Get-Process -Id <System.Int32[]> -IncludeUserName [<CommonParameters>]
-    Get-Process [[-Name] <System.String[]>] -IncludeUserName [<CommonParameters>]
-    Get-Process -IncludeUserName -InputObject <System.Diagnostics.Process[]> [<CommonParameters>]
+$((Get-Command Get-Process -Syntax).split("`n") | where {$_ -match 'Name'} | Out-String)
 
 Si vous vouliez voir tous les processus PowerShell et ceux commençant par {0}sys{1} ET afficher le
 nom d'utilisateur, avez-vous une idée de quelle commande vous taperiez?
@@ -198,7 +195,7 @@ nom d'utilisateur, avez-vous une idée de quelle commande vous taperiez?
 "@ -f $highLight2,$reset
 
 $P13 = @"
-$prompt {0}Get-Process{3} {1}pwsh,sys*{3} {2}-IncludeUsername{3}
+$prompt {0}Get-Process{3} {1}$psh,sys*{3} {2}-IncludeUsername{3}
 "@ -f $cmdStyle,$defaultTokenStyle,$paramStyle,$reset
 
 $P14 = @"
@@ -220,52 +217,102 @@ Maintenant, si vous ne l'avez pas fait depuis un moment, allez-y et exécutez {2
 
 "@ -f $highLight,$highLight2,$cmdStyle,$defaultTokenStyle,$reset
 #endregion
+
 #region run the tutorial
-Clear-Host
-$title
-$Intro
-$P1
-pause
-Clear-Host
-$P2
-pause
-$P3
-Pause
-$P4
-pause
-$P5
-Pause
-Clear-Host
-$P6
-Pause
-Clear-Host
-$P7
-Pause
-Clear-Host
-$P8
-Pause
-$P9
-Get-Process -id $pid | Out-Host
-pause
-$P10
-pause
-Clear-Host
-$P10a
-Get-Process -name pwsh,sys* | Out-Host
-pause
-Clear-Host
-$P11
-Get-Help Get-Process -Parameter *name | Out-Host
-"`e[3A"
-pause
-$P12
-Pause
-$P13
-Get-Process pwsh,sys* -includeUsername | Out-Host
-$P14
-Pause
-Clear-Host
-$P15
+$pages = @(
+    {
+        Clear-Host
+        $title
+        $Intro
+        $P1
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        Clear-Host
+        $P2
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        $P3
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        $P4
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        Clear-Host
+        $P5
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        Clear-Host
+        $P6
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        Clear-Host
+        $P7
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        Clear-Host
+        $P8
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        Clear-Host
+        $P9
+        Get-Process -Id $pid | Out-Host
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        $P10
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        Clear-Host
+        $P10a
+        Get-Process -Name $psh, sys* | Out-Host
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        Clear-Host
+        $P11
+        Get-Help -Name Get-Process -Parameter *name | Out-Host
+        "$e[3A"
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        $P12
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        Clear-Host
+        $P13
+        Get-Process $psh,sys* -IncludeUserName | Out-Host
+        $P14
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        Clear-Host
+        $P15
+        (Get-Help about_parameters).split("`n")[1..20] ; '...'
+        $P16
+        $script:pg++ ; Pause $script:pg $pgCount
+    }
+)
+#keep a navigation page counter
+$pgCount = $pages.count
+<#
+There is an overlap in functionality between $i and $pg but they are
+separate counters because there may be times I need to display a "page"
+of information into two pages and want to maintain a page number.
+#>
+for ($script:i = 0; $script:i -lt $pages.count; $script:i++) {
+    Invoke-Command -ScriptBlock $pages[$script:i]
+}
+
 #endregion
 
 if ($Full) {

@@ -36,12 +36,13 @@ PS C:\> Start-PSTutorial
     2 - Get-Command
     3 - Get-Help
     4 - Get-Member
-    5 - Quit
+    5 - PowerShell Profiles
+    6 - Quit
 
-    Sélectionnez une option de menu [1-5]:
+    Sélectionnez une option de menu [1-6]:
 ```
 
-Le titre du menu sera formaté en utilisant $PSStyle.
+Entrez un numéro pour lancer le tutoriel correspondant. En appuyant sur n'importe quelle autre touche, vous quitterez.
 
 ### Example 2
 
@@ -58,10 +59,11 @@ Lancez le tutoriel Get-Command.
 Spécifiez un sujet de tutoriel ; sinon, un menu de sujets vous sera présenté.
 Les sujets valides sont :
 
-- Notions essentielles de PowerShell
+- PowerShell Essentials
 - Get-Command
 - Get-Help
 - Get-Member
+- PowerShell Profiles
 
 ```yaml
 Type: String

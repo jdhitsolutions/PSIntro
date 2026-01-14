@@ -32,16 +32,17 @@ PS C:\> Start-PSTutorial
 
     PowerShell-Tutorial-Menü
 
-        1 - PowerShell-Grundlagen
-        2 - Get-Command
-        3 - Get-Help
-        4 - Get-Member
-        5 - Beenden
+    1 - PowerShell-Grundlagen
+    2 - Get-Command
+    3 - Get-Help
+    4 - Get-Member
+    5 - PowerShell-Profiles
+    6 - Beenden
 
-        Wählen Sie eine Menüoption [1-5]:
+    Wählen Sie eine Menüoption [1-6]:
 ```
 
-Der Menütitel wird mit `$PSStyle` formatiert.
+Geben Sie eine Nummer ein, um das entsprechende Tutorial zu starten. Wenn Sie eine andere Taste eingeben, wird das Programm beendet.
 
 ### Example 2
 
@@ -62,6 +63,7 @@ Gültige Themen sind:
 - Get-Command
 - Get-Help
 - Get-Member
+- PowerShell Profiles
 
 ```yaml
 Type: String

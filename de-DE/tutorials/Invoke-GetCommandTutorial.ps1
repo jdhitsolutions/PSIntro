@@ -1,13 +1,18 @@
-#an interactive tutorial for Get-Command
+﻿#an interactive tutorial for Get-Command
 
 Param(
     [switch]$Full,
     [switch]$Menu
 )
 
+#region setup
+$script:tutorialParam = $PSBoundParameters
+
 $cmd = 'Get-Command'
 
 $title = "$($titleStyle)Erste Schritte mit $cmd$reset"
+
+#endregion
 
 #region content
 $Intro = @"
@@ -22,16 +27,16 @@ Nomen ist die Einzahl des Objekts, mit dem Sie arbeiten möchten, wie {1}Service
 $P1 = @"
 Befehle in PowerShell können entweder {0}Cmdlets{1} oder {0}Funktionen{1} sein. {0}Cmdlets{1}
 sind kompilierte Befehle, die auf .NET-Klassen basieren und für die Verwendung in PowerShell entwickelt
- wurden. {0}Funktionen{1} sind ähnlich wie Cmdlets, jedoch nicht kompiliert. Funktionen werden in der
- Skriptsprache von PowerShell geschrieben. Funktionen werden genauso ausgeführt wie Cmdlets. Es gibt
- keinen Ausführungsunterschied, nur Unterschiede in der Art ihrer Implementierung.
+wurden. {0}Funktionen{1} sind ähnlich wie Cmdlets, jedoch nicht kompiliert. Funktionen werden in der
+Skriptsprache von PowerShell geschrieben. Funktionen werden genauso ausgeführt wie Cmdlets. Es gibt
+keinen Ausführungsunterschied, nur Unterschiede in der Art ihrer Implementierung.
 
 "@ -f $highLight,$reset
 
 $P2 = @"
 Verwenden Sie {0}Get-Command{2}, um Befehle zu finden. Angenommen, Sie suchen nach Befehlen zur Verwaltung
- von Prozessen. Sie können {0}Get-Command{2} verwenden, um verfügbare Befehle mit Platzhaltern zu
- entdecken.
+von Prozessen. Sie können {0}Get-Command{2} verwenden, um verfügbare Befehle mit Platzhaltern zu
+entdecken.
 
 $prompt {0}Get-Command{2} {1}*prozess*{2}
 "@ -f $cmdStyle,$defaultTokenStyle,$reset
@@ -79,30 +84,59 @@ Um die Parameter besser zu verstehen, verwenden Sie {2}Get-Help{1}, um mehr zu e
 
 #region run the tutorial
 
-Clear-Host
-$title
-$Intro
+$pages = @(
+    {
+        Clear-Host
+        $title
+        $Intro
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        $P1
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        Clear-Host
+        $P2
+        (Get-Command *process* | Select-Object -First 10 | Out-Host) ; "$e[1A...`n" | Out-Host
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        Clear-Host
+        $P3
+        (Get-Command -CommandType Function, Cmdlet | Select-Object -First 10 | Out-Host) ; "$e[1A...`n" | Out-Host
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        $P4
+        Pause $script:pg $pgCount
+    },
+    {
+        $P5
+         $script:pg++ ;Pause $script:pg $pgCount
+    },
+    {
+        Clear-Host
+        $P5a
+        Get-Command Get-Process -Syntax | Out-Host
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        $P6
+        $script:pg++ ; Pause $script:pg $pgCount
+    }
+)
 
-pause
-$P1
-pause
-Clear-Host
-$P2
-(Get-Command *process* | Select-Object -first 10 | Out-Host) && "`e[1A...`n" | Out-Host
-pause
-$P3
-(Get-Command -CommandType Function,Cmdlet | Select-Object -first 10 | Out-Host)  && "`e[1A...`n" | Out-Host
-pause
-$P4
-pause
-$P5
-Pause
-Clear-Host
-$P5a
-Get-Command Get-Process -Syntax | Out-Host
-pause
-
-$P6
+#keep a navigation page counter
+$pgCount = 7
+<#
+There is an overlap in functionality between $i and $pg but they are
+separate counters because there may be times I need to display a "page"
+of information into two pages and want to maintain a page number.
+#>
+for ($script:i = 0; $script:i -lt $pages.count; $script:i++) {
+    Invoke-Command -ScriptBlock $pages[$script:i]
+}
 #endregion
 
 if ($full) {

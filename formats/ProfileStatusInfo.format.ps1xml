@@ -46,7 +46,7 @@ https://github.com/jdhitsolutions/PSScriptTools
               <TableColumnItem>
                 <ScriptBlock>
                   If (-Not $_.Exists) {
-                    "{0}{1}{2}" -f (Get-PSReadlineOption).ErrorColor,$_.ProfileName,$PSStyle.Reset
+                    "{0}{1}{2}" -f (Get-PSReadlineOption).ErrorColor,$_.ProfileName,"$([char]27)[0m"
                   }
                   else {
                     $_.ProfileName
@@ -56,10 +56,10 @@ https://github.com/jdhitsolutions/PSScriptTools
               <TableColumnItem>
                 <ScriptBlock>
                   If (-Not $_.Exists) {
-                    "{0}{1}{2}" -f (Get-PSReadlineOption).ErrorColor,$_.Path,$PSStyle.Reset
+                    "{0}{1}{2}" -f (Get-PSReadlineOption).ErrorColor,$_.Path,"$([char]27)[0m"
                   }
                   else {
-                    $_.ProfileName
+                    $_.Path
                   }
                   </ScriptBlock>
               </TableColumnItem>
@@ -69,7 +69,7 @@ https://github.com/jdhitsolutions/PSScriptTools
                     $_.Exists
                   }
                   else {
-                    "{0}{1}{2}" -f (Get-PSReadlineOption).ErrorColor,$_.Exists,$PSStyle.Reset
+                    "{0}{1}{2}" -f (Get-PSReadlineOption).ErrorColor,$_.Exists,"$([char]27)[0m"
                   }
                   </ScriptBlock>
               </TableColumnItem>

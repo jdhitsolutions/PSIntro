@@ -1,7 +1,7 @@
 #localized string data for verbose messaging, errors, and warnings.
 
 ConvertFrom-StringData @"
-continue = Press Enter to continue (Q to quit)
+continue = Press any key to continue (P for previous page or Q to Quit)
 key = Key module status:
 menuSelect = Select a menu option
 menuTitle = PowerShell Tutorial Menu
@@ -23,4 +23,14 @@ validating = Validating {0} modules
 ending = Ending module command {0}
 quit = Quit
 getProfile = Getting PowerShell profile script status for the current host.
+addProfileComment = Added Get-PSIntro entry
+noProfileFound = The profile script could not be found.
+profilePrompt = Do you want to create it? Enter Y to create the file, any other key to cancel
+cmdFound = It looks like a command for Get-PSIntro is already in the profile script {0}.
+updatePath = Updating PowerShell profile script {0}
+createPath = Creating PowerShell profile script {0}
+testPath = Testing PowerShell profile script {0}
+newProfile = Creating PowerShell profile script for {0}
+existingProfile = An existing PowerShell profile script for {0} has been found at {1}.
+profileTutorialTitle = Getting Started with PowerShell Profile Scripts
 "@

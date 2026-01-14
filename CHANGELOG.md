@@ -5,6 +5,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2026-01-14
+
+### Added
+
+- Added tutorial on PowerShell profile scripts. [[Issue #9](https://github.com/jdhitsolutions/PSIntro/issues/9)]
+- Added function `New-PSProfile` to create PowerShell profile scripts.
+- Added function `Add-PSIntro` to add a `Get-PSintro` command to the user's profile for the current user current host.
+
+### Changed
+
+- Help updates.
+- Modified tutorials to navigate to previous page.
+- Revised module commands and tutorials to support Windows PowerShell 5.1 __This is a major breaking change and the reason for the major bump in version number.__ [[Issue #7](https://github.com/jdhitsolutions/PSIntro/issues/7)]
+- Revised tutorials to show page progress. [[Issue #12](https://github.com/jdhitsolutions/PSIntro/issues/12)]
+- Updated `README.md`.
+
+### Fixed
+
+- Fixed bug in profile status formatting.
+
 ## [1.0.1] - 2025-12-01
 
 ### Added
@@ -124,7 +144,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release to GitHub
 
-[Unreleased]: https://github.com/jdhitsolutions/PSIntro/compare/v1.0.1..HEAD
+[Unreleased]: https://github.com/jdhitsolutions/PSIntro/compare/v2.0.0..HEAD
+[2.0.0]: https://github.com/jdhitsolutions/PSIntro/compare/v1.0.1..v2.0.0
 [1.0.1]: https://github.com/jdhitsolutions/PSIntro/compare/v1.0.0..v1.0.1
 [1.0.0]: https://github.com/jdhitsolutions/PSIntro/compare/v0.10.0..v1.0.0
 [0.10.0]: https://github.com/jdhitsolutions/PSIntro/compare/v0.9.0..v0.10.0

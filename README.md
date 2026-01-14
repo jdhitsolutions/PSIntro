@@ -4,11 +4,11 @@
 
 ![](images/PowerShell-transparent-thumb.jpg)
 
-This is an __educational and reference__ module targeted for PowerShell beginner, although everyone is welcome to install and use the module.
+This is an __educational and reference__ module targeted for PowerShell beginners, although everyone is welcome to install and use the module.
 
 ## Installation
 
-This module requires PowerShell 7 and should work on Windows, Linux, and macOS. To install the module from the PowerShell Gallery, run the following command:
+This module has been revised to support Windows PowerShell and PowerShell 7. It should work on Windows, Linux, and macOS. To install the module from the PowerShell Gallery, run the following command:
 
 ```powershell
 Install-Module PSIntro
@@ -19,6 +19,8 @@ If you are using the newer, and recommended `Microsoft.PowerShell.PSResourceGet`
 ```powershell
 Install-PSResource -Name PSIntro
 ```
+
+> *Due to the major revisions to support Windows PowerShell and significant changes to the tutorial framework, the module version was increased to 2.0.0. All previous versions of this module will only run on PowerShell 7.*
 
 ## Overview
 
@@ -60,7 +62,7 @@ Get-PSIntro -ModuleStatus
 
 ## [Get-ModuleStatus](docs/Get-ModuleStatus.md)
 
-This information is also available by running `Get-ModuleStatus`.
+This information is also available by running the `Get-ModuleStatus` command.
 
 ```powershell
 PS C:\> Get-ModuleStatus
@@ -93,7 +95,30 @@ The module also includes a command to display the status of PowerShell profile s
 
 ![Get-ProfileStatus](images/get-profilestatus.png)
 
-To learn more about profile scripts, read the help documentation:
+## [New-PSProfile](docs/New-PSProfile.md)
+
+Because this module is designed for an absolute beginner, it includes a command to create PowerShell profile scripts. The default behavior is to create the profile script for the current user in the current PowerShell host.
+
+```powershell
+PS C:\> New-PSProfile
+
+    Directory: C:\Users\jeff\Documents\PowerShell
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a--             1/8/2026  8:13 AM              0 Microsoft.PowerShell_profile.ps1
+```
+
+You can specify a different profile script by using the `-Name` parameter.
+
+```powershell
+PS C:\> New-PSProfile -Name AllUsersCurrentHost -WhatIf
+What if: Performing the operation "Create File" on target "Destination: C:\Program Files\PowerShell\7\Microsoft.PowerShell_profile.ps1".
+```
+
+The command has tab-completion support for the `-Name` parameter to see the available profile script names.
+
+To learn more about profile scripts, run the "PowerShell Profiles" tutorial and read the help documentation:
 
 ```powershell
 PS C:\>help about_Profiles
@@ -115,15 +140,25 @@ If the user elects to run tutorials from the welcome screen, the tutorials will 
 
 ![Get-Command tutorial](images/gcm-tutorial.png)
 
+## [Add-PSIntro](docs/Add-PSIntro.md)
+
+You can use this command to add a Start-PSIntro command to your PowerShell profile. This will cause the Start-PSIntro command to run automatically each time you start a new PowerShell session. You can customize the command by using the ModuleStatus and Tutorial parameters which will add the corresponding parameters to the Start-PSIntro command in your profile.
+
+```powershell
+PS C:\> Add-PSIntro -ModuleStatus
+```
+
+This will add the command `Start-PSIntro -ModuleStatus` to the end of your PowerShell profile script for the current user in the current PowerShell host.
+
 ## Tutorials
 
 The module contains a set of tutorials written for absolute PowerShell beginners. The tutorials are written as PowerShell scripts with a combination of formatted text and __live__ console output from the user's session. This ensures that output is relevant to the user's environment.
 
 ![Interactive tutorial](images/interactive.png)
 
-The tutorials use $PSStyle for formatting.
+The tutorials use ANSI for formatting. These settings are not user-configurable at this time.
 
-You can quit a tutorial at any time by entering `q` at the prompt. Note that your progress __will not be saved__.
+You can quit a tutorial at any time by entering `q` at the prompt. Version 2.0.0 of this module introduced a simple navigation feature that allows you to return to the previous "page" of the tutorial. Note that your progress __will not be saved__. However, the tutorials are short enough that you can quickly page through them again.
 
 ## Localization
 
@@ -135,6 +170,16 @@ If you add a new localization, you should include a culture-specific folder that
 
 This file should be named with the last part of the culture name. For example, if you are providing a Spanish localization using the `es-ES` culture, the docs folder name would be `docs-ES`. All other files would be placed in `es-ES`. I will generate help files from the localized Markdown files with each new release.
 
+__Pay close attention to the casing of the culture name when creating a localized folder.__
+
+```powershell
+PS C:\> Get-Culture -Name es-es
+
+LCID             Name             DisplayName
+----             ----             -----------
+3082             es-ES            Spanish (Spain)
+```
+
 ## Future Development
 
 This is a list of items under consideration for future development of this module.
@@ -143,15 +188,13 @@ This is a list of items under consideration for future development of this modul
   - Microsoft.PowerShell.ThreadJobs
   - Microsoft.PowerShell.ConsoleGuiTools
   - Pester
-- Saving tutorial progress
 - Export tutorials to Polyglot notebooks
 - Additional tutorial topics:
   - PSReadline fundamentals
   - Using $PSStyle
   - Understanding PSDrives
   - PSResourceGet
-  - PowerShell profile scripts
+  - Using variables
 - Create a tutorial authoring framework
 
 Please use the [Discussions](https://github.com/jdhitsolutions/PSIntro/discussions) section of the project's GitHub repository to share your thoughts, ideas, and suggestions.
-

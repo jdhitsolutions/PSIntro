@@ -1,57 +1,51 @@
-Function Start-PSTutorial {
+function Start-PSTutorial {
     [cmdletbinding()]
     [OutputType('None')]
-    Param(
+    param(
         [Parameter(
             Position = 0,
-            HelpMessage = "Specify a tutorial topic otherwise you will be presented with a menu of topics."
+            HelpMessage = 'Specify a tutorial topic otherwise you will be presented with a menu of topics.'
         )]
-        [ValidateSet("PowerShell Essentials","Get-Command","Get-Help","Get-Member")]
+        [ValidateSet('PowerShell Essentials', 'Get-Command', 'Get-Help', 'Get-Member', 'PowerShell Profiles')]
         [string]$Topic
-     )
+    )
 
-     <#
-     $list = @"
-     #$($PSStyle.Underline+$PSStyle.Foreground.Green)$($strings.menuTitle)$($PSStyle.Reset)
-
-    1 - $($strings.psEssentials)
-    2 - Get-Command
-    3 - Get-Help
-    4 - Get-Member
-    5 - $($strings.quit)
-
-"@
- #>
-
-#29 Nov 2025 use the private Format-BorderBox function to stylize the menu
+    #29 Nov 2025 use the private Format-BorderBox function to stylize the menu
     [string[]]$list = @(
-"                    "
-"    1 - $($strings.psEssentials)    ",
-"    2 - Get-Command",
-"    3 - Get-Help",
-"    4 - Get-Member",
-"    5 - $($strings.quit)"
-"                        "
-)
-    If ($PSBoundParameters.ContainsKey('Topic')) {
+        '                    '
+        "    1 - $($strings.psEssentials)    ",
+        '    2 - Get-Command',
+        '    3 - Get-Help',
+        '    4 - Get-Member',
+        '    5 - PowerShell Profiles',
+        "    6 - $($strings.quit)"
+        '                        '
+    )
+
+    # $tutorials is a module-scoped hashtable defined in PSIntro.psm1
+    if ($PSBoundParameters.ContainsKey('Topic')) {
         #launch the tutorial from the module-scoped hashtable
-        & $Tutorials[$Topic]
+        & $tutorials[$Topic]
     }
     else {
         Clear-Host
-        Format-BorderBox -text $list -title $strings.menuTitle -BorderColor "`e[93m"
-        Try {
-            [int]$r = Read-Host "    $($PSStyle.Italic)$($PSStyle.Foreground.BrightGreen)$($strings.menuSelect)$($PSStyle.Reset) [1-5]"
-
-            Switch ($r) {
+        Format-BorderBox -text $list -title $strings.menuTitle -BorderColor "$e[93m"
+        $script:pg = 0
+        try {
+            [int]$menuItem = Read-Host "    $e[3;92m$($strings.menuSelect)$($reset) [1-6]"
+            #The call operator runs each script in a child scope
+            switch ($menuItem) {
                 1 { &$tutorials['PowerShell Essentials'] -menu }`
-                2 { &$tutorials['Get-Command'] -menu}
+                2 { &$tutorials['Get-Command'] -menu }
                 3 { &$tutorials['Get-Help'] -menu }
-                4 { &$tutorials['Get-Member'] -menu}
+                4 { &$tutorials['Get-Member'] -menu }
+                5 { &$tutorials['PowerShell Profiles'] -menu }
+                6 { break }
             }
         } #Try
-        Catch {
+        catch {
             #if the user enters any other value, consider it a quit or cancel
         } #Catch
     }
+    #write-host "exit menu"
 }

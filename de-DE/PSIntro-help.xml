@@ -2,6 +2,164 @@
 <helpItems schema="maml" xmlns="http://msh">
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
+      <command:name>Add-PSIntro</command:name>
+      <command:verb>Add</command:verb>
+      <command:noun>PSIntro</command:noun>
+      <maml:description>
+        <maml:para>Fügt Start-PSIntro zu Ihrem PowerShell-Profil hinzu.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Mit diesem Befehl können Sie einen Start-PSIntro-Befehl zu Ihrem PowerShell-Profil hinzufügen. Dadurch wird der Befehl Start-PSIntro jedes Mal automatisch ausgeführt, wenn Sie eine neue PowerShell-Sitzung starten. Sie können den Befehl mithilfe der Parameter -ModuleStatus und -Tutorial anpassen, die die entsprechenden Parameter zum Start-PSIntro-Befehl in Ihrem Profil hinzufügen.</maml:para>
+      <maml:para>Wenn das Profilskript nicht existiert, werden Sie aufgefordert, es zu erstellen.</maml:para>
+      <maml:para>Sie müssen das Profilskript manuell bearbeiten, um den Start-PSIntro-Befehl zu entfernen oder zu ändern, wenn Sie dieses Verhalten ändern oder stoppen möchten.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Add-PSIntro</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>ModuleStatus</maml:name>
+          <maml:description>
+            <maml:para>Schließt den Parameter -ModuleStatus ein.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Tutorial</maml:name>
+          <maml:description>
+            <maml:para>Schließt den Parameter -Tutorial ein.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+          <maml:name>Confirm</maml:name>
+          <maml:description>
+            <maml:para>Fordert Sie zur Bestätigung auf, bevor das Cmdlet ausgeführt wird.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+          <maml:name>WhatIf</maml:name>
+          <maml:description>
+            <maml:para>Zeigt an, was passieren würde, wenn das Cmdlet ausgeführt würde. Das Cmdlet wird nicht ausgeführt.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>ModuleStatus</maml:name>
+        <maml:description>
+          <maml:para>Schließt den Parameter -ModuleStatus ein.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Tutorial</maml:name>
+        <maml:description>
+          <maml:para>Schließt den Parameter -Tutorial ein.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+        <maml:name>Confirm</maml:name>
+        <maml:description>
+          <maml:para>Fordert Sie zur Bestätigung auf, bevor das Cmdlet ausgeführt wird.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+        <maml:name>WhatIf</maml:name>
+        <maml:description>
+          <maml:para>Zeigt an, was passieren würde, wenn das Cmdlet ausgeführt würde. Das Cmdlet wird nicht ausgeführt.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>none</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Weitere Informationen zu PowerShell: http://jdhitsolutions.com/yourls/newsletter</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Add-PSIntro -ModuleStatus</dev:code>
+        <dev:remarks>
+          <maml:para>Dadurch wird der Befehl `Start-PSIntro -ModuleStatus` an das Ende Ihres PowerShell-Profilskripts für den aktuellen Benutzer im aktuellen PowerShell-Host angefügt.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>New-PSProfile</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-ProfileStatus</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
       <command:name>Get-ModuleStatus</command:name>
       <command:verb>Get</command:verb>
       <command:noun>ModuleStatus</command:noun>
@@ -358,6 +516,159 @@ Willkommen bei PowerShell!
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
+      <command:name>New-PSProfile</command:name>
+      <command:verb>New</command:verb>
+      <command:noun>PSProfile</command:noun>
+      <maml:description>
+        <maml:para>Erstellt ein neues PowerShell-Profilskript.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Erstellt ein neues PowerShell-Profilskript, falls es noch nicht existiert. Standardmäßig wird das Profilskript für den aktuellen Benutzer im aktuellen PowerShell-Host erstellt. Sie können ein anderes Profilskript mit dem Parameter -Name angeben.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>New-PSProfile</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="0" aliases="ProfileName">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Erstellt das angegebene PowerShell-Profilskript. Sie können die Tab‑Vervollständigung verwenden, um die verfügbaren Profilskriptnamen anzuzeigen.</maml:para>
+          </maml:description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">CurrentUserCurrentHost</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">CurrentUserAllHosts</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">AllUsersCurrentHost</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">AllUsersAllHosts</command:parameterValue>
+          </command:parameterValueGroup>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>CurrentUserCurrentHost</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+          <maml:name>Confirm</maml:name>
+          <maml:description>
+            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+          <maml:name>WhatIf</maml:name>
+          <maml:description>
+            <maml:para>Zeigt an, was passieren würde, wenn das Cmdlet ausgeführt würde. Das Cmdlet wird nicht ausgeführt.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="0" aliases="ProfileName">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>Erstellt das angegebene PowerShell-Profilskript. Sie können die Tab‑Vervollständigung verwenden, um die verfügbaren Profilskriptnamen anzuzeigen.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>CurrentUserCurrentHost</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+        <maml:name>Confirm</maml:name>
+        <maml:description>
+          <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
+        <maml:name>WhatIf</maml:name>
+        <maml:description>
+          <maml:para>Zeigt an, was passieren würde, wenn das Cmdlet ausgeführt würde. Das Cmdlet wird nicht ausgeführt.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.String[]</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.IO.FileInfo</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Weitere Informationen zu PowerShell: http://jdhitsolutions.com/yourls/newsletter</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; New-PSProfile
+
+    Directory: C:\Users\jeff\Documents\PowerShell
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a--             1/8/2026  8:13 AM              0 Microsoft.PowerShell_profile.ps1</dev:code>
+        <dev:remarks>
+          <maml:para>Dies erstellt das Profilskript für den aktuellen Benutzer im aktuellen PowerShell-Host, falls es noch nicht vorhanden ist. Sie können anschließend das Profilskript bearbeiten, um Ihre Anpassungen hinzuzufügen.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>PS C:\&gt; Get-ProfileStatus | New-PSProfile -WhatIf
+What if: Performing the operation "Create File" on target "Destination: C:\Program Files\PowerShell\7\profile.ps1".
+What if: Performing the operation "Create File" on target "Destination: C:\Program Files\PowerShell\7\Microsoft.PowerShell_profile.ps1".
+WARNING: An existing PowerShell profile script for CurrentUserAllHosts has been found at C:\Users\jeff\Documents\PowerShell\profile.ps1.
+What if: Performing the operation "Create File" on target "Destination: C:\Users\jeff\Documents\PowerShell\Microsoft.PowerShell_profile.ps1".</dev:code>
+        <dev:remarks>
+          <maml:para>Ermittelt den Status aller PowerShell-Profilskripte und leitet die Ergebnisse an New-PSProfile weiter, um fehlende Profilskripte zu erstellen. Der Parameter -WhatIf zeigt an, was passieren würde, ohne tatsächlich Dateien zu erstellen.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Get-ProfileStatus</maml:linkText>
+        <maml:uri></maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
       <command:name>Start-PSTutorial</command:name>
       <command:verb>Start</command:verb>
       <command:noun>PSTutorial</command:noun>
@@ -380,6 +691,7 @@ Willkommen bei PowerShell!
             <maml:para>- Get-Command</maml:para>
             <maml:para>- Get-Help</maml:para>
             <maml:para>- Get-Member</maml:para>
+            <maml:para>- PowerShell Profiles</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -399,6 +711,7 @@ Willkommen bei PowerShell!
           <maml:para>- Get-Command</maml:para>
           <maml:para>- Get-Help</maml:para>
           <maml:para>- Get-Member</maml:para>
+          <maml:para>- PowerShell Profiles</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -440,15 +753,16 @@ Willkommen bei PowerShell!
 
     PowerShell-Tutorial-Menü
 
-        1 - PowerShell-Grundlagen
-        2 - Get-Command
-        3 - Get-Help
-        4 - Get-Member
-        5 - Beenden
+    1 - PowerShell-Grundlagen
+    2 - Get-Command
+    3 - Get-Help
+    4 - Get-Member
+    5 - PowerShell-Profiles
+    6 - Beenden
 
-        Wählen Sie eine Menüoption [1-5]:</dev:code>
+    Wählen Sie eine Menüoption [1-6]:</dev:code>
         <dev:remarks>
-          <maml:para>Der Menütitel wird mit `$PSStyle` formatiert.</maml:para>
+          <maml:para>Geben Sie eine Nummer ein, um das entsprechende Tutorial zu starten. Wenn Sie eine andere Taste eingeben, wird das Programm beendet.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>

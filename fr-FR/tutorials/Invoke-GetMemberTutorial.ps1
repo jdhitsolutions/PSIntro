@@ -1,12 +1,21 @@
-#an interactive tutorial for Get-Member
+﻿#an interactive tutorial for Get-Member
 
 Param(
   [switch]$Full,
   [switch]$Menu
 )
 
+#region setup
+$script:tutorialParam = $PSBoundParameters
 $cmd = 'Get-Member'
 $title = "$($titleStyle)Démarrer avec $cmd$reset"
+if ($IsCoreCLR) {
+    $psh = 'pwsh'
+
+} else {
+    $psh = 'powershell'
+}
+#endregion
 
 #region content
 $Intro = @"
@@ -18,7 +27,7 @@ L'un des plus grands défis pour les débutants en PowerShell est de comprendre 
 avec des {3}objets{1} dans un pipeline et non du texte. Lorsque vous exécutez une commande dans PowerShell,
 elle renvoie un objet, généralement formaté pour faciliter la lecture.
 
-$prompt {0}Get-Process{1} {2}pwsh{1}
+$prompt {0}Get-Process{1} {2}$psh{1}
 "@ -f $cmdStyle,$reset,$defaultTokenStyle,$highLight,$highLight2
 
 $P1 = @"
@@ -53,7 +62,7 @@ $P3 = @"
 Maintenant que vous avez une compréhension de base de la façon dont un objet sera décrit, exécutons
 {0}Get-Member{1}.
 
-$prompt {0}Get-Process{1} {2}pwsh{1} | {0}Get-Member{1}
+$prompt {0}Get-Process{1} {2}$psh{1} | {0}Get-Member{1}
 
 "@ -f $cmdStyle,$reset,$defaultTokenStyle
 
@@ -125,7 +134,7 @@ de la même manière que les autres propriétés.
 
 Vous pouvez demander à {2}Get-Member{1} d'afficher des types de membres sélectionnés en utilisant le paramètre {3}MemberType{1}.
 
-$prompt {2}Get-Process{1} {4}pwsh{1} | {2}Get-Member{1} {3}-MemberType{1} {4}ScriptProperty{1}
+$prompt {2}Get-Process{1} {4}$psh{1} | {2}Get-Member{1} {3}-MemberType{1} {4}ScriptProperty{1}
 
 "@ -f $highLight,$reset,$cmdStyle,$paramStyle,$defaultTokenStyle
 
@@ -133,7 +142,7 @@ $P8 = @"
 
 Si vous voulez voir {0}toutes{1} les types de propriétés, dirigez la commande vers {2}Get-Member{1} comme ceci:
 
-{2}Get-Process{1} {4}pwsh{1} | {2}Get-Member{1} {3}-MemberType{1} {4}Properties{1}
+{2}Get-Process{1} {4}$psh{1} | {2}Get-Member{1} {3}-MemberType{1} {4}Properties{1}
 
 Une fois que vous avez identifié les propriétés que vous souhaitez utiliser, vous pouvez les utiliser dans PowerShell:
 
@@ -152,42 +161,83 @@ Pour plus d'informations, lisez l'aide pour {0}Get-Member{1} et consultez les ex
 
 "@ -f $cmdStyle,$reset
 #endregion
+
 #region run the tutorial
-Clear-Host
-$title
-$Intro
-Get-Process pwsh | Out-Host
-pause
-$P1
-pause
-Clear-Host
-$P2
-pause
-Clear-Host
-$P3
-pause
-$P4
-pause
-$P5
-pause
-Clear-Host
-$P6
-pause
-Clear-Host
-$P7
-pause
-"`e[2A"
-Get-Process -id $pid | Get-Member -MemberType ScriptProperty | Out-Host
-pause
-Clear-Host
-$P8
-pause
-"`e[2A"
-Get-Process | Where-Object WS -gt 10mb | Sort-Object WS -Descending |
-Select-Object ID,Handles,WS,Name,StartTime -first 5 | Format-Table | Out-Host
-pause
-Clear-Host
-$P9
+
+$pages = @(
+    {
+        Clear-Host
+        $title
+        $Intro
+        Get-Process $psh | Out-Host
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        $P1
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        Clear-Host
+        $P2
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        Clear-Host
+        $P3
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        $P4
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        $P5
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        Clear-Host
+        $P6
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        Clear-Host
+        $P7
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        "$e[2A"
+        Get-Process -Id $pid | Get-Member -MemberType ScriptProperty | Out-Host
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        Clear-Host
+        $P8
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        "$e[2A"
+        Get-Process | Where-Object WS -GT 10mb | Sort-Object WS -Descending |
+        Select-Object ID, Handles, WS, Name, StartTime -First 5 | Format-Table | Out-Host
+        $script:pg++ ; Pause $script:pg $pgCount
+    },
+    {
+        Clear-Host
+        $P9
+        $script:pg++ ; Pause $script:pg $pgCount
+    }
+)
+#keep a navigation page counter
+$pgCount = 12
+
+<#
+There is an overlap in functionality between $i and $pg but they are
+separate counters because there may be times I need to display a "page"
+of information into two pages and want to maintain a page number.
+#>
+for ($script:i = 0; $script:i -lt $pages.count; $script:i++) {
+    Invoke-Command -ScriptBlock $pages[$script:i]
+}
+
 #endregion
 
 if ($Full) {

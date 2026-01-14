@@ -3,14 +3,14 @@
 #
 @{
     RootModule           = 'PSIntro.psm1'
-    ModuleVersion        = '1.0.1'
-    CompatiblePSEditions = 'Core'
+    ModuleVersion        = '2.0.0'
+    CompatiblePSEditions = 'Core','Desktop'
     GUID                 = 'e5e4f309-b2ec-43e0-ac18-4a136a112487'
     Author               = 'Jeff Hicks'
     CompanyName          = 'JDH Information Technology Solutions, Inc.'
-    Copyright            = '(c) 2025 JDH Information Technology Solutions, Inc.'
+    Copyright            = '(c) 2025-2026 JDH Information Technology Solutions, Inc.'
     Description          = 'A welcome screen for PowerShell and a set of brief tutorials designed for absolute beginners. The module also includes a few commands to help absolute PowerShell beginners manage their environment.'
-    PowerShellVersion    = '7.5'
+    PowerShellVersion    = '5.1'
     FormatsToProcess     = @(
         'formats\ModuleStatusInfo.format.ps1xml',
         'formats\ProfileStatusInfo.format.ps1xml'
@@ -20,7 +20,9 @@
         'Start-PSTutorial',
         'Get-PSIntro',
         'Get-ModuleStatus',
-        'Get-ProfileStatus'
+        'Get-ProfileStatus',
+        'Add-PSIntro',
+        'New-PSProfile'
     )
     RequiredModules      = @()
     CmdletsToExport      = @()
