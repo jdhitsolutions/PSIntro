@@ -241,7 +241,7 @@ for ($script:i = 0; $script:i -lt $pages.count; $script:i++) {
 #endregion
 
 if ($Full) {
-  #this is the last lesson in the set. No action needed.
+    &$tutorials['PSDrives'] -Full
 }
 elseif ($menu) {
     Start-PSTutorial

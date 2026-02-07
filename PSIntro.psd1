@@ -3,7 +3,7 @@
 #
 @{
     RootModule           = 'PSIntro.psm1'
-    ModuleVersion        = '2.0.0'
+    ModuleVersion        = '2.1.0'
     CompatiblePSEditions = 'Core','Desktop'
     GUID                 = 'e5e4f309-b2ec-43e0-ac18-4a136a112487'
     Author               = 'Jeff Hicks'

@@ -6,7 +6,7 @@ function Start-PSTutorial {
             Position = 0,
             HelpMessage = 'Specify a tutorial topic otherwise you will be presented with a menu of topics.'
         )]
-        [ValidateSet('PowerShell Essentials', 'Get-Command', 'Get-Help', 'Get-Member', 'PowerShell Profiles')]
+        [ValidateSet('PowerShell Essentials', 'Get-Command', 'Get-Help', 'Get-Member', 'PSDrives','PowerShell Profiles')]
         [string]$Topic
     )
 
@@ -17,8 +17,9 @@ function Start-PSTutorial {
         '    2 - Get-Command',
         '    3 - Get-Help',
         '    4 - Get-Member',
-        '    5 - PowerShell Profiles',
-        "    6 - $($strings.quit)"
+        '    5 - PSDrives and Providers'
+        '    6 - PowerShell Profiles',
+        "    7 - $($strings.quit)"
         '                        '
     )
 
@@ -32,15 +33,16 @@ function Start-PSTutorial {
         Format-BorderBox -text $list -title $strings.menuTitle -BorderColor "$e[93m"
         $script:pg = 0
         try {
-            [int]$menuItem = Read-Host "    $e[3;92m$($strings.menuSelect)$($reset) [1-6]"
+            [int]$menuItem = Read-Host "    $e[3;92m$($strings.menuSelect)$($reset) [1-$($list.count - 2)]"
             #The call operator runs each script in a child scope
             switch ($menuItem) {
                 1 { &$tutorials['PowerShell Essentials'] -menu }`
                 2 { &$tutorials['Get-Command'] -menu }
                 3 { &$tutorials['Get-Help'] -menu }
                 4 { &$tutorials['Get-Member'] -menu }
-                5 { &$tutorials['PowerShell Profiles'] -menu }
-                6 { break }
+                5 { &$tutorials['PSDrives'] -menu}
+                6 { &$tutorials['PowerShell Profiles'] -menu }
+                7 { "`n" ; break }
             }
         } #Try
         catch {

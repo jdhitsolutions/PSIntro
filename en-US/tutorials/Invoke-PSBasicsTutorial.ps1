@@ -1,4 +1,4 @@
-# An interactive tutorial for PowerShell basics
+# An interactive tutorial on PowerShell basics
 
 param(
     [switch]$Full,
@@ -261,19 +261,20 @@ $pages = @(
         $script:pg++ ; Pause $script:pg $pgCount
     },
     {
-        $i = 123
-        $n = $nVar #"pw*"
+        $n = $nVar
         $P11
         $script:pg++ ; Pause $script:pg $pgCount
     },
     {
-        $files = Get-ChildItem -Path $HOME -File | Sort-Object -Property LastWriteTime | Select-Object -First 5
+        $i = 123
+        $files = Get-ChildItem -Path $HOME -File | Sort-Object -Property LastWriteTime |
+        Select-Object -First 5
         $P12
         $i * 2 | Out-Host
     },
     {
         $P13
-        Get-Process $n | Out-Host
+        Get-Process $nVar | Out-Host
         $script:pg++ ; Pause $script:pg $pgCount
     },
     {

@@ -13,8 +13,16 @@ Display a PowerShell welcome screen
 
 ## SYNTAX
 
+### default (Default)
+
 ```yaml
 Get-PSIntro [-ModuleStatus] [-Tutorial] [<CommonParameters>]
+```
+
+### welcome
+
+```yaml
+Get-PSIntro [-WelcomeOnly] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -89,7 +97,7 @@ Include key module status.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: default
 Aliases:
 
 Required: False
@@ -105,8 +113,24 @@ Show the tutorial prompt. If you select Yes, the tutorials will run consecutivel
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: default
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WelcomeOnly
+
+Only display the welcome splash screen of links.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: welcome
+Aliases: SplashOnly
 
 Required: False
 Position: Named

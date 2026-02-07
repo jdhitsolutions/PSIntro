@@ -242,7 +242,7 @@ for ($script:i = 0; $script:i -lt $pages.count; $script:i++) {
 #endregion
 
 if ($Full) {
-    &$tutorials['PowerShell Profiles'] -Full
+    &$tutorials['PSDrives'] -Full
 }
 elseif ($menu) {
     Start-PSTutorial

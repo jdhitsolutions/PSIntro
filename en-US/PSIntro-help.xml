@@ -149,6 +149,10 @@
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://jdhitsolutions.com/yourls/aa006b</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
         <maml:linkText>New-PSProfile</maml:linkText>
         <maml:uri></maml:uri>
       </maml:navigationLink>
@@ -393,6 +397,20 @@ CurrentUserCurrentHost C:\Users\jeff\Documents\PowerShell\Microsoft.PowerShell_p
           <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
       </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-PSIntro</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="SplashOnly">
+          <maml:name>WelcomeOnly</maml:name>
+          <maml:description>
+            <maml:para>Only display the welcome splash screen of links.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
     </command:syntax>
     <command:parameters>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
@@ -411,6 +429,18 @@ CurrentUserCurrentHost C:\Users\jeff\Documents\PowerShell\Microsoft.PowerShell_p
         <maml:name>Tutorial</maml:name>
         <maml:description>
           <maml:para>Show the tutorial prompt. If you select Yes, the tutorials will run consecutively, in order. If you select No, the command will exit without running any tutorials. You can run Start-PSTutorial to launch the tutorials at any time and in any order.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="SplashOnly">
+        <maml:name>WelcomeOnly</maml:name>
+        <maml:description>
+          <maml:para>Only display the welcome splash screen of links.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -661,6 +691,10 @@ What if: Performing the operation "Create File" on target "Destination: C:\Users
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://jdhitsolutions.com/yourls/14ae48</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
         <maml:linkText>Get-ProfileStatus</maml:linkText>
         <maml:uri></maml:uri>
       </maml:navigationLink>
@@ -690,6 +724,7 @@ What if: Performing the operation "Create File" on target "Destination: C:\Users
             <maml:para>- Get-Command</maml:para>
             <maml:para>- Get-Help</maml:para>
             <maml:para>- Get-Member</maml:para>
+            <maml:para>- PSDrives</maml:para>
             <maml:para>- PowerShell Profiles</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -710,6 +745,7 @@ What if: Performing the operation "Create File" on target "Destination: C:\Users
           <maml:para>- Get-Command</maml:para>
           <maml:para>- Get-Help</maml:para>
           <maml:para>- Get-Member</maml:para>
+          <maml:para>- PSDrives</maml:para>
           <maml:para>- PowerShell Profiles</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -756,10 +792,11 @@ What if: Performing the operation "Create File" on target "Destination: C:\Users
     2 - Get-Command
     3 - Get-Help
     4 - Get-Member
-    5 - PowerShell Profiles
-    6 - Quit
+    5 - PSDrives and Providers
+    6 - PowerShell Profiles
+    7 - Quit
 
-    Select a menu option [1-6]:</dev:code>
+    Select a menu option [1-7]:</dev:code>
         <dev:remarks>
           <maml:para>Enter a number to launch the corresponding tutorial. Entering any other key will quit.</maml:para>
         </dev:remarks>

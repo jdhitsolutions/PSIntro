@@ -60,6 +60,15 @@ Get-PSIntro -ModuleStatus
 
 ![Get-PSIntro with module status](images/psintro-module-status.png)
 
+If you would like to only see the splash screen of links, use the `WelcomeOnly` parameter which has an alias of `SplashOnly`. This is useful if you want to add the command to your profile but do not want to display the tutorial prompt or module status.
+
+```powershell
+Get-PSIntro -WelcomeOnly
+```
+
+> This parameter was added in version 2.1.0.
+>
+
 ## [Get-ModuleStatus](docs/Get-ModuleStatus.md)
 
 This information is also available by running the `Get-ModuleStatus` command.
@@ -158,7 +167,7 @@ The module contains a set of tutorials written for absolute PowerShell beginners
 
 The tutorials use ANSI for formatting. These settings are not user-configurable at this time.
 
-You can quit a tutorial at any time by entering `q` at the prompt. Version 2.0.0 of this module introduced a simple navigation feature that allows you to return to the previous "page" of the tutorial. Note that your progress __will not be saved__. However, the tutorials are short enough that you can quickly page through them again.
+You can quit a tutorial at any time by entering `q` at the prompt. Version 2.0.0 of this module introduced a simple navigation feature that allows you to return to the previous "page" of the tutorial by entering `p`. Note that your progress __will not be saved__. However, the tutorials are short enough that you can quickly page through them again.
 
 ## Localization
 
@@ -189,12 +198,10 @@ This is a list of items under consideration for future development of this modul
   - Microsoft.PowerShell.ConsoleGuiTools
   - Pester
 - Export tutorials to Polyglot notebooks
-- Additional tutorial topics:
+- Possible additional tutorial topics:
   - PSReadline fundamentals
   - Using $PSStyle
-  - Understanding PSDrives
   - PSResourceGet
-  - Using variables
 - Create a tutorial authoring framework
 
 Please use the [Discussions](https://github.com/jdhitsolutions/PSIntro/discussions) section of the project's GitHub repository to share your thoughts, ideas, and suggestions.

@@ -72,6 +72,7 @@ $tutorials = @{
     'Get-Help'              = Join-Path -Path $tutorialPath -ChildPath 'Invoke-GetHelpTutorial.ps1'
     'Get-Member'            = Join-Path -Path $tutorialPath -ChildPath 'Invoke-GetMemberTutorial.ps1'
     'PowerShell Profiles'   = Join-Path -Path $tutorialPath -ChildPath 'Invoke-PSProfileTutorial.ps1'
+    'PSDrives'              = Join-Path -Path $tutorialPath -ChildPath 'Invoke-PSDriveTutorial.ps1'
 }
 
 #get module version for use in Verbose messaging

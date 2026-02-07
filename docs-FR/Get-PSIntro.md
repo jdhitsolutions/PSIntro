@@ -13,8 +13,16 @@ Affiche un écran de bienvenue PowerShell
 
 ## SYNTAX
 
+### default (Default)
+
 ```yaml
 Get-PSIntro [-ModuleStatus] [-Tutorial] [<CommonParameters>]
+```
+
+### welcome
+
+```yaml
+Get-PSIntro [-WelcomeOnly] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -107,6 +115,22 @@ Afficher l'invite du tutoriel. Si vous sélectionnez Oui, les tutoriels s'exécu
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WelcomeOnly
+
+Affiche uniquement l'écran de bienvenue avec les liens.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: welcome
+Aliases: SplashOnly
 
 Required: False
 Position: Named

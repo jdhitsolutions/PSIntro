@@ -1,12 +1,15 @@
 Function Get-PSIntro {
-    [cmdletbinding()]
+    [cmdletbinding(DefaultParameterSetName = "default")]
     [Alias('PSIntro','PSWelcome')]
     [OutputType('Object[]')]
     Param(
-        [Parameter(HelpMessage = 'Include module status')]
+        [Parameter(ParameterSetName = "default",HelpMessage = 'Include module status')]
         [switch]$ModuleStatus,
-        [Parameter(HelpMessage = 'Show the tutorial prompt')]
-        [switch]$Tutorial
+        [Parameter(ParameterSetName = "default",HelpMessage = 'Show the tutorial prompt')]
+        [switch]$Tutorial,
+        [parameter(ParameterSetName = "welcome",HelpMessage = "Only display the welcome splash screen of links.")]
+        [Alias("SplashOnly")]
+        [switch]$WelcomeOnly
     )
 
     Clear-Host
@@ -39,12 +42,22 @@ Function Get-PSIntro {
 $welcomeStyle$($strings.welcome)$($reset)
 $head
 $reset
-  $($strings.welcome_1)
-  $($strings.welcome_2 -f $cmdStyle,$helpLink,$reset)
-
 "@
 
+If ($PSCmdlet.ParameterSetName -eq 'Default') {
+    #add the welcome strings
+    $intro += @"
+    $($strings.welcome_1)
+    $($strings.welcome_2 -f $cmdStyle,$helpLink,$reset)
+
+"@
+    }
+
     $intro
+    if ($WelcomeOnly) {
+        #don't display anything else
+        return
+    }
 
     if ($ModuleStatus) {
         $ModuleInfo = Get-ModuleStatus

@@ -36,10 +36,11 @@ PS C:\> Start-PSTutorial
     2 - Get-Command
     3 - Get-Help
     4 - Get-Member
-    5 - PowerShell Profiles
-    6 - Quit
+    5 - PSDrives and Providers
+    6 - PowerShell Profiles
+    7 - Quit
 
-    Select a menu option [1-6]:
+    Select a menu option [1-7]:
 ```
 
 Enter a number to launch the corresponding tutorial. Entering any other key will quit.
@@ -63,6 +64,7 @@ Valid topics are:
 - Get-Command
 - Get-Help
 - Get-Member
+- PSDrives
 - PowerShell Profiles
 
 ```yaml

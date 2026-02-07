@@ -5,6 +5,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.1.0] - 2026-02-07
+
+### Added
+
+- Added a tutorial on PSProviders and PSDrives.
+- Added missing online help links.
+- Added a `WelcomeOnly` parameter to `Get-PSIntro` to only display the welcome screen of links. This parameter has an alias of `SplashOnly`.
+
+### Changed
+
+- Updated `README.md`.
+
+### Fixed
+
+- Fixed bugs in *PowerShell Essentials* tutorial.
+
 ## [2.0.0] - 2026-01-14
 
 ### Added
@@ -144,7 +160,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release to GitHub
 
-[Unreleased]: https://github.com/jdhitsolutions/PSIntro/compare/v2.0.0..HEAD
+[Unreleased]: https://github.com/jdhitsolutions/PSIntro/compare/v2.1.0..HEAD
+[2.1.0]: https://github.com/jdhitsolutions/PSIntro/compare/v2.0.0..v2.1.0
 [2.0.0]: https://github.com/jdhitsolutions/PSIntro/compare/v1.0.1..v2.0.0
 [1.0.1]: https://github.com/jdhitsolutions/PSIntro/compare/v1.0.0..v1.0.1
 [1.0.0]: https://github.com/jdhitsolutions/PSIntro/compare/v0.10.0..v1.0.0

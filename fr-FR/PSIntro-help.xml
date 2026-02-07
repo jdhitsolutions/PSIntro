@@ -149,6 +149,10 @@
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://jdhitsolutions.com/yourls/f33175</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
         <maml:linkText>New-PSProfile</maml:linkText>
         <maml:uri></maml:uri>
       </maml:navigationLink>
@@ -392,6 +396,17 @@ CurrentUserCurrentHost C:\Users\jeff\Documents\PowerShell\Microsoft.PowerShell_p
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="SplashOnly">
+          <maml:name>WelcomeOnly</maml:name>
+          <maml:description>
+            <maml:para>Affiche uniquement l'écran de bienvenue avec les liens.</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
@@ -411,6 +426,18 @@ CurrentUserCurrentHost C:\Users\jeff\Documents\PowerShell\Microsoft.PowerShell_p
         <maml:name>Tutorial</maml:name>
         <maml:description>
           <maml:para>Afficher l'invite du tutoriel. Si vous sélectionnez Oui, les tutoriels s'exécuteront consécutivement, dans l'ordre. Si vous sélectionnez Non, la commande quittera sans exécuter de tutoriels. Vous pouvez exécuter Start-PSTutorial à tout moment pour lancer les tutoriels dans n'importe quel ordre.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="SplashOnly">
+        <maml:name>WelcomeOnly</maml:name>
+        <maml:description>
+          <maml:para>Affiche uniquement l'écran de bienvenue avec les liens.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -661,6 +688,10 @@ What if: Performing the operation "Create File" on target "Destination: C:\Users
     </command:examples>
     <command:relatedLinks>
       <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>https://jdhitsolutions.com/yourls/346c42</maml:uri>
+      </maml:navigationLink>
+      <maml:navigationLink>
         <maml:linkText>Get-ProfileStatus</maml:linkText>
         <maml:uri></maml:uri>
       </maml:navigationLink>
@@ -690,6 +721,7 @@ What if: Performing the operation "Create File" on target "Destination: C:\Users
             <maml:para>- Get-Command</maml:para>
             <maml:para>- Get-Help</maml:para>
             <maml:para>- Get-Member</maml:para>
+            <maml:para>- PSDrives</maml:para>
             <maml:para>- PowerShell Profiles</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -710,6 +742,7 @@ What if: Performing the operation "Create File" on target "Destination: C:\Users
           <maml:para>- Get-Command</maml:para>
           <maml:para>- Get-Help</maml:para>
           <maml:para>- Get-Member</maml:para>
+          <maml:para>- PSDrives</maml:para>
           <maml:para>- PowerShell Profiles</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -756,10 +789,11 @@ What if: Performing the operation "Create File" on target "Destination: C:\Users
     2 - Get-Command
     3 - Get-Help
     4 - Get-Member
-    5 - PowerShell Profiles
-    6 - Quit
+    5 - PSDrives and Providers
+    6 - PowerShell Profiles
+    7 - Quit
 
-    Sélectionnez une option de menu [1-6]:</dev:code>
+    Sélectionnez une option de menu [1-7]:</dev:code>
         <dev:remarks>
           <maml:para>Entrez un numéro pour lancer le tutoriel correspondant. En appuyant sur n'importe quelle autre touche, vous quitterez.</maml:para>
         </dev:remarks>

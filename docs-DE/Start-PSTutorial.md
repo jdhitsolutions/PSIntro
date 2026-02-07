@@ -36,10 +36,11 @@ PS C:\> Start-PSTutorial
     2 - Get-Command
     3 - Get-Help
     4 - Get-Member
-    5 - PowerShell-Profiles
-    6 - Beenden
+    5 - PSDrives and Providers
+    6 - PowerShell-Profile
+    7 - Beenden
 
-    Wählen Sie eine Menüoption [1-6]:
+    Wählen Sie eine Menüoption [1-7]:
 ```
 
 Geben Sie eine Nummer ein, um das entsprechende Tutorial zu starten. Wenn Sie eine andere Taste eingeben, wird das Programm beendet.
@@ -63,6 +64,7 @@ Gültige Themen sind:
 - Get-Command
 - Get-Help
 - Get-Member
+- PSDrives
 - PowerShell Profiles
 
 ```yaml
